@@ -118,12 +118,14 @@ namespace Центр_занятости.pages
                 {
                     MessageBox.Show("Выберите элемент, прежде чем удалять", "Внимание",
                         MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Внимание",
                     MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
             }
         }
 

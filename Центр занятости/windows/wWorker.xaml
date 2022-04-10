@@ -31,7 +31,9 @@
                        Margin="10" 
                        Text="Центр занятости"/>
         </StackPanel>
-        <Menu Background="#c6fbff" 
+        <Menu Background="#c6fbff"
+              BorderBrush="White"
+              BorderThickness="0"
               FontFamily="{Binding ElementName=wind,
             Path=FontFamily}"
               Grid.Row="1">

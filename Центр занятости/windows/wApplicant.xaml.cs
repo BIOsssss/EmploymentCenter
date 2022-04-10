@@ -22,11 +22,19 @@ namespace Центр_занятости.windows
     public partial class wApplicant : Window
     {
         public static Users user;
+
+        public List<MenuItem> menuItems = new List<MenuItem>();
+
         public wApplicant(Users users)
         {
             InitializeComponent();
             user = users;
-            frm.Navigate(new pages.pMain());
+            RoutedEventArgs e = new RoutedEventArgs();
+            object sender = menuMain;
+            menuItems.Add(menuMain);
+            menuItems.Add(menuVacancy);
+            menuItems.Add(menuDocs);
+            menuMain_Click(sender, e);
             Update(user);
         }
 
@@ -71,9 +79,29 @@ namespace Центр_занятости.windows
             this.Close();
         }
 
+        private void menuUpdate()
+        {
+            BrushConverter bc = new BrushConverter();
+            foreach (var item in menuItems)
+            {
+                item.Background = (Brush)bc.ConvertFromString("#c6fbff");
+                item.BorderBrush = (Brush)bc.ConvertFromString("#c6fbff");
+            }
+        }
+
         private void menuMain_Click(object sender, RoutedEventArgs e)
         {
+            menuUpdate();
             frm.Navigate(new pages.pMain());
+            foreach (var item in menuItems)
+            {
+                if (item.Name == menuMain.Name)
+                {
+                    item.Background = Brushes.White;
+                    item.BorderBrush = Brushes.White;
+                    break;
+                }
+            }
         }
 
         private void menuHelp_Click(object sender, RoutedEventArgs e)
@@ -96,12 +124,32 @@ namespace Центр_занятости.windows
 
         private void menuDocs_Click(object sender, RoutedEventArgs e)
         {
+            menuUpdate();
             frm.Navigate(new pages.pDocs(user));
+            foreach (var item in menuItems)
+            {
+                if (item.Name == menuDocs.Name)
+                {
+                    item.Background = Brushes.White;
+                    item.BorderBrush = Brushes.White;
+                    break;
+                }
+            }
         }
 
         private void menuVacancy_Click(object sender, RoutedEventArgs e)
         {
+            menuUpdate();
             frm.Navigate(new pages.pVacancies(user));
+            foreach (var item in menuItems)
+            {
+                if (item.Name == menuVacancy.Name)
+                {
+                    item.Background = Brushes.White;
+                    item.BorderBrush = Brushes.White;
+                    break;
+                }
+            }
         }
 
         private void wind_PreviewKeyDown(object sender, KeyEventArgs e)

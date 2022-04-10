@@ -30,7 +30,9 @@
                        Margin="10" 
                        Text="Центр занятости"/>
         </StackPanel>
-        <Menu Background="#c6fbff" 
+        <Menu Background="#c6fbff"
+              BorderBrush="White"
+              BorderThickness="0"
               FontFamily="{Binding ElementName=wind,
             Path=FontFamily}"
               Grid.Row="1">
@@ -56,19 +58,19 @@
                 </MenuItem.Header>
             </MenuItem>
 
-            <MenuItem Name="menuVacancy"
-                      Click="menuVacancy_Click">
+            <MenuItem Name="menuUsers"
+                      Click="menuUsers_Click">
                 <MenuItem.Header>
                     <StackPanel  Margin="10 0 0 0" 
                      HorizontalAlignment="Left"
                      Orientation="Horizontal"
                      VerticalAlignment="Center">
                         <Image Height="50" Width="50" 
-                   Source="/image/vacancy.png"
+                   Source="/image/users.png"
                HorizontalAlignment="Left"/>
                         <TextBlock FontSize="24" 
                        Margin="10" 
-                       Text="Вакансии"/>
+                       Text="Пользователи"/>
                     </StackPanel>
                 </MenuItem.Header>
             </MenuItem>
@@ -90,6 +92,23 @@
                 </MenuItem.Header>
             </MenuItem>
 
+            <MenuItem Name="menuVacancy"
+                      Click="menuVacancy_Click">
+                <MenuItem.Header>
+                    <StackPanel  Margin="10 0 0 0" 
+                     HorizontalAlignment="Left"
+                     Orientation="Horizontal"
+                     VerticalAlignment="Center">
+                        <Image Height="50" Width="50" 
+                   Source="/image/vacancy.png"
+               HorizontalAlignment="Left"/>
+                        <TextBlock FontSize="24" 
+                       Margin="10" 
+                       Text="Вакансии"/>
+                    </StackPanel>
+                </MenuItem.Header>
+            </MenuItem>
+
             <MenuItem Name="menuReport"
                       Click="menuReport_Click">
                 <MenuItem.Header>
@@ -103,23 +122,6 @@
                         <TextBlock FontSize="24" 
                        Margin="10" 
                        Text="Отчет"/>
-                    </StackPanel>
-                </MenuItem.Header>
-            </MenuItem>
-
-            <MenuItem Name="menuUsers"
-                      Click="menuUsers_Click">
-                <MenuItem.Header>
-                    <StackPanel  Margin="10 0 0 0" 
-                     HorizontalAlignment="Left"
-                     Orientation="Horizontal"
-                     VerticalAlignment="Center">
-                        <Image Height="50" Width="50" 
-                   Source="/image/users.png"
-               HorizontalAlignment="Left"/>
-                        <TextBlock FontSize="24" 
-                       Margin="10" 
-                       Text="Пользователи"/>
                     </StackPanel>
                 </MenuItem.Header>
             </MenuItem>

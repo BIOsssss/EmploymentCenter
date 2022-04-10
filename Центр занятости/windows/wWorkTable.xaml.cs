@@ -62,8 +62,8 @@ namespace Центр_занятости.windows
                     if (MessageBox.Show("Вы точно хотите удалить данные?", "Внимание",
                         MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
                     {
-                        windows.wAuth.center.ExpWorkUnemployed.Remove(item);
-                        windows.wAuth.center.SaveChanges();
+                        wAuth.center.ExpWorkUnemployed.Remove(item);
+                        wAuth.center.SaveChanges();
                         Update();
                         Refresh();
                         MessageBox.Show("Успешно удалено", "Внимание",
@@ -80,6 +80,7 @@ namespace Центр_занятости.windows
             {
                 MessageBox.Show(ex.Message, "Внимание",
                     MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
             }
         }
 

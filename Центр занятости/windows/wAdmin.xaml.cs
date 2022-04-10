@@ -24,10 +24,18 @@ namespace Центр_занятости.windows
     {
         private Users user;
 
+        public List<MenuItem> menuItems = new List<MenuItem>();
+
         public wAdmin(Users user)
         {
             InitializeComponent();
-            frm.Navigate(new pages.pMain());
+            RoutedEventArgs e = new RoutedEventArgs();
+            object sender = menuMain;
+            menuItems.Add(menuMain);
+            menuItems.Add(menuVacancy);
+            menuItems.Add(menuDocs);
+            menuItems.Add(menuUsers);
+            menuMain_Click(sender, e);
             this.user = user;
             DataContext = user;
         }
@@ -38,6 +46,16 @@ namespace Центр_занятости.windows
             timer.Tick += new EventHandler(timer_Tick);
             timer.Interval = new TimeSpan(0, 0, 1);
             timer.Start();
+        }
+
+        private void menuUpdate()
+        {
+            BrushConverter bc = new BrushConverter();
+            foreach(var item in menuItems)
+            {
+                item.Background = (Brush)bc.ConvertFromString("#c6fbff");
+                item.BorderBrush = (Brush)bc.ConvertFromString("#c6fbff");
+            }
         }
 
         private void timer_Tick(object sender, EventArgs e)
@@ -56,12 +74,32 @@ namespace Центр_занятости.windows
 
         private void menuMain_Click(object sender, RoutedEventArgs e)
         {
+            menuUpdate();
             frm.Navigate(new pages.pMain());
+            foreach(var item in menuItems)
+            {
+                if(item.Name == menuMain.Name)
+                {
+                    item.Background = Brushes.White;
+                    item.BorderBrush = Brushes.White;
+                    break;
+                }
+            }
         }
 
         private void menuUsers_Click(object sender, RoutedEventArgs e)
         {
+            menuUpdate();
             frm.Navigate(new pages.pUsers(user));
+            foreach (var item in menuItems)
+            {
+                if (item.Name == menuUsers.Name)
+                {
+                    item.Background = Brushes.White;
+                    item.BorderBrush = Brushes.White;
+                    break;
+                }
+            }
         }
 
         private void menuHelp_Click(object sender, RoutedEventArgs e)
@@ -80,12 +118,32 @@ namespace Центр_занятости.windows
 
         private void menuDocs_Click(object sender, RoutedEventArgs e)
         {
+            menuUpdate();
             frm.Navigate(new pages.pDocs(user));
+            foreach (var item in menuItems)
+            {
+                if (item.Name == menuDocs.Name)
+                {
+                    item.Background = Brushes.White;
+                    item.BorderBrush = Brushes.White;
+                    break;
+                }
+            }
         }
 
         private void menuVacancy_Click(object sender, RoutedEventArgs e)
         {
+            menuUpdate();
             frm.Navigate(new pages.pVacancies(user));
+            foreach (var item in menuItems)
+            {
+                if (item.Name == menuVacancy.Name)
+                {
+                    item.Background = Brushes.White;
+                    item.BorderBrush = Brushes.White;
+                    break;
+                }
+            }
         }
 
         private void wind_PreviewKeyDown(object sender, KeyEventArgs e)

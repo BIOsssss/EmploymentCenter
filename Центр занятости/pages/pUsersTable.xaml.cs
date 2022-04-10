@@ -97,6 +97,7 @@ namespace Центр_занятости.pages
             {
                 MessageBox.Show(ex.Message, "Внимание",
                     MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
             }
         }
 

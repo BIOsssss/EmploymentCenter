@@ -144,14 +144,23 @@ namespace Центр_занятости.windows
             }
             else
             {
-                if (MessageBox.Show("Вы точно хотите удалить данные?", "Внимание",
-                    MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                try
                 {
-                    windows.wAuth.center.Organization.Remove(org);
-                    windows.wAuth.center.SaveChanges();
-                    MessageBox.Show("Успешно удалено", "Внимание",
-                        MessageBoxButton.OK, MessageBoxImage.Information);
-                    this.Close();
+                    if (MessageBox.Show("Вы точно хотите удалить данные?", "Внимание",
+    MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                    {
+                        wAuth.center.Organization.Remove(org);
+                        wAuth.center.SaveChanges();
+                        MessageBox.Show("Успешно удалено", "Внимание",
+                            MessageBoxButton.OK, MessageBoxImage.Information);
+                        Close();
+                    }
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Внимание",
+                        MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
                 }
             }
         }
