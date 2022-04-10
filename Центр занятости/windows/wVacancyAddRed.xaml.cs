@@ -142,6 +142,7 @@ namespace Центр_занятости.windows
             tlType.Content = cmbType.Text;
             if(vacancy.ID == 0)
             {
+                cbVal.IsChecked = true;
                 vacancy.Valid = true;
                 vacancy.Date = DateTime.Now;
             }

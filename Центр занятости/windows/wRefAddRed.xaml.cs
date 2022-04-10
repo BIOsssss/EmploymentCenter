@@ -29,6 +29,7 @@ namespace Центр_занятости.windows
             this.user = user;
             cmbWork.ItemsSource = wAuth.center.Workers.ToList();
             DataContext = referral;
+
             if(user.Roles.Name == "Инспектор")
             {
                 var worker = wAuth.center.Workers.Where(p => p.ID_User == user.ID).ToList();
@@ -105,18 +106,19 @@ namespace Центр_занятости.windows
                 }
             }
             cmbApp.ItemsSource = lst;
-            
+
+            var cmbB = wAuth.center.Vacancy.Where(p => p.Valid == true).ToList();
+            List<Organization> list = new List<Organization>();
+            foreach (var item in cmbB)
+            {
+                list.Add(item.Organization);
+            }
+            cmbOrg.ItemsSource = list.Distinct();
+
+            cmbVac.ItemsSource = cmbB.OrderBy(p => p.Header);
+
             if (referral.ID == 0)
             {
-                var cmbB = wAuth.center.Vacancy.Where(p => p.Valid == true).ToList();
-                List<Organization> list = new List<Organization>();
-                foreach (var item in cmbB)
-                {                    
-                    list.Add(item.Organization);
-                }
-                cmbOrg.ItemsSource = list.Distinct();
-
-                cmbVac.ItemsSource = wAuth.center.Vacancy.Where(p => p.Valid == true).ToList();
                 dateSt.SelectedDate = DateTime.Now;
                 dateF.SelectedDate = dateSt.SelectedDate.Value.AddDays(3);
                 referral.Hired = true;
@@ -124,8 +126,6 @@ namespace Центр_занятости.windows
             }
             else
             {
-                cmbOrg.ItemsSource = wAuth.center.Organization.ToList();
-                cmbVac.ItemsSource = wAuth.center.Vacancy.ToList();
                 if (dateF.SelectedDate < DateTime.Now)
                 {
                     cbHired.IsChecked = false;
@@ -136,16 +136,6 @@ namespace Центр_занятости.windows
             }
             if (user.Roles.Name == "Инспектор")
             {
-                var cmbB = wAuth.center.Vacancy.Where(p => p.Valid == true).ToList();
-                List<Organization> list = new List<Organization>();
-                foreach (var item in cmbB)
-                {
-                    list.Add(item.Organization);
-                }
-                cmbOrg.ItemsSource = list.Distinct();
-
-                cmbVac.ItemsSource = wAuth.center.Vacancy.Where(p => p.Valid == true).ToList();
-
                 var worker = wAuth.center.Workers.Where(p => p.ID_User == user.ID).ToList();
                 cmbWork.ItemsSource = worker;
                 cmbWork.SelectedIndex = 0;
@@ -157,10 +147,38 @@ namespace Центр_занятости.windows
         {
             var item = cmbVac.SelectedItem as Vacancy;
             cmbOrg.SelectedIndex = -1;
-            var res = wAuth.center.Organization.Where(p => p.ID == item.ID_Org).ToList();
-            foreach(var item2 in res)
+            bool itog = false;
+            if(item == null)
             {
-                cmbOrg.SelectedItem = item2;
+                return;
+            }
+            else
+            {
+                foreach (var i in wAuth.center.Vacancy)
+                {
+                    if (i.Header == item.Header)
+                    {
+                        itog = true;
+                        break;
+                    }
+                    else
+                    {
+                        itog = false;
+                        continue;
+                    }
+                }
+                if (itog)
+                {
+                    var res = wAuth.center.Organization.Where(p => p.ID == item.ID_Org).ToList();
+                    foreach (var item2 in res)
+                    {
+                        cmbOrg.SelectedItem = item2;
+                    }
+                }
+                else
+                {
+                    return;
+                }
             }
         }
 

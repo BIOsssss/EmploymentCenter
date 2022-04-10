@@ -479,7 +479,7 @@ namespace Центр_занятости.windows
                     if (txtAbb.Text.Contains("ФУ"))
                     {
                         string v = mas[0].Remove(0, 3);
-                        txtFull.Text += $"Финансовое управление {mas[0]} ";
+                        txtFull.Text += $"Финансовое управление {v}";
                     }
                     if (txtAbb.Text.Contains("НПО"))
                     {

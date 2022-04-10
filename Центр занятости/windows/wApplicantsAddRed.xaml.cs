@@ -438,6 +438,10 @@ namespace Центр_занятости.windows
             {
                 dateBirthday.SelectedDate = DateTime.Now;
             }
+            if(user_main.Roles.Name == "Соискатель")
+            {
+                cbReg.IsEnabled = false;
+            }
             try
             {
                 txtAddress.Text = $"{applicant.Adres}";
@@ -629,17 +633,24 @@ namespace Центр_занятости.windows
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             mp.Close();
-            if (applicant.Address == null || applicant.RegistrationAddress == null
-                    || applicant.Passport == null || applicant.Passport1 == null)
+            if(user_main.Roles.Name == "Администратор")
             {
-                MessageBox.Show("Введите адрес проживания и паспортные данные",
-                    "Внимание", MessageBoxButton.OK, MessageBoxImage.Error);
-                e.Cancel = true;
-                return;
+
             }
             else
             {
+                if (applicant.Address == null || applicant.RegistrationAddress == null
+                || applicant.Passport == null || applicant.Passport1 == null)
+                {
+                    MessageBox.Show("Введите адрес проживания и паспортные данные",
+                        "Внимание", MessageBoxButton.OK, MessageBoxImage.Error);
+                    e.Cancel = true;
+                    return;
+                }
+                else
+                {
 
+                }
             }
         }
 

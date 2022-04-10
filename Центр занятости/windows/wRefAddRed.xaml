@@ -52,8 +52,7 @@
         </TextBlock>
         <ComboBox Style="{StaticResource cmbAddRed}"
                   x:Name="cmbOrg"
-                  IsEditable="True"
-                  MaxDropDownHeight="100"
+                  IsEnabled="False"
                   Grid.ColumnSpan="2"
                   Grid.Row="1"
                   Width="300"
@@ -72,6 +71,8 @@
         <ComboBox Style="{StaticResource cmbAddRed}"
                   x:Name="cmbVac"
                   Grid.ColumnSpan="2"
+                  IsEditable="True"
+                  MaxDropDownHeight="100"
                   Grid.Row="2"
                   Width="300"
                   HorizontalAlignment="Right"

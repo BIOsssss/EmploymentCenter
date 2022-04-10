@@ -152,14 +152,42 @@ namespace Центр_занятости.windows
         private void cmbReg_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Regions region = cmbReg.SelectedItem as Regions;
-            var items = wAuth.center.Localities.Where(p => p.ID_Region == region.ID).ToList();
-            if(items.Count == 0)
+            bool res = false;
+            if(region == null)
             {
-                cmbLoc.ItemsSource = wAuth.center.Localities.ToList();
+                return;
             }
             else
             {
-                cmbLoc.ItemsSource = items;
+                foreach (var item in wAuth.center.Regions)
+                {
+                    if (item.Name == region.Name)
+                    {
+                        res = true;
+                        break;
+                    }
+                    else
+                    {
+                        res = false;
+                        continue;
+                    }
+                }
+                if (res)
+                {
+                    var items = wAuth.center.Localities.Where(p => p.ID_Region == region.ID).ToList();
+                    if (items.Count == 0)
+                    {
+                        cmbLoc.ItemsSource = wAuth.center.Localities.ToList();
+                    }
+                    else
+                    {
+                        cmbLoc.ItemsSource = items;
+                    }
+                }
+                else
+                {
+                    return;
+                }
             }
         }
     }

@@ -59,19 +59,19 @@
                 </MenuItem.Header>
             </MenuItem>
 
-            <MenuItem Name="menuVacancy"
-                      Click="menuVacancy_Click">
+            <MenuItem Name="menuUsers"
+                      Click="menuUsers_Click">
                 <MenuItem.Header>
                     <StackPanel  Margin="10 0 0 0" 
                      HorizontalAlignment="Left"
                      Orientation="Horizontal"
                      VerticalAlignment="Center">
                         <Image Height="50" Width="50" 
-                   Source="/image/vacancy.png"
+                   Source="/image/users.png"
                HorizontalAlignment="Left"/>
                         <TextBlock FontSize="24" 
                        Margin="10" 
-                       Text="Вакансии"/>
+                       Text="Пользователи"/>
                     </StackPanel>
                 </MenuItem.Header>
             </MenuItem>
@@ -93,19 +93,19 @@
                 </MenuItem.Header>
             </MenuItem>
 
-            <MenuItem Name="menuUsers"
-                      Click="menuUsers_Click">
+            <MenuItem Name="menuVacancy"
+                      Click="menuVacancy_Click">
                 <MenuItem.Header>
                     <StackPanel  Margin="10 0 0 0" 
                      HorizontalAlignment="Left"
                      Orientation="Horizontal"
                      VerticalAlignment="Center">
                         <Image Height="50" Width="50" 
-                   Source="/image/users.png"
+                   Source="/image/vacancy.png"
                HorizontalAlignment="Left"/>
                         <TextBlock FontSize="24" 
                        Margin="10" 
-                       Text="Пользователи"/>
+                       Text="Вакансии"/>
                     </StackPanel>
                 </MenuItem.Header>
             </MenuItem>

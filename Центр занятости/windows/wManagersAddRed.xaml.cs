@@ -178,5 +178,27 @@ namespace Центр_занятости.windows
                 }
             }
         }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if(user_main.Roles.Name == "Администратор")
+            {
+
+            }
+            else
+            {
+                if (manager.Organization.Count == 0)
+                {
+                    MessageBox.Show("Введите информацию об организации",
+                        "Внимание", MessageBoxButton.OK, MessageBoxImage.Error);
+                    e.Cancel = true;
+                    return;
+                }
+                else
+                {
+
+                }
+            }
+        }
     }
 }

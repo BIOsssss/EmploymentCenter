@@ -31,7 +31,7 @@ namespace Центр_занятости.windows
             this.user = user;
             cmbApp.ItemsSource = wAuth.center.Applicants.
                 Where(p => p.Passport != 0 &&
-                p.PaymentAcc != null &&
+                p.Passport != null &&
                 p.Passport1 != null
                 && p.Address != 0 &&
                 p.Address != null &&
@@ -56,7 +56,39 @@ namespace Центр_занятости.windows
                 {
                     error += "Выберите статус заявления\n";
                 }
-                if(application.CommentWorker != null)
+                else
+                {
+                    var app = cmbApp.SelectedItem as Applicants;
+                    var st = cmbStatus.SelectedItem as StatusUnemployed;
+                    if (app.ReferralToWork.Count == 0)
+                    {
+                        if(st.Name == "Трудоустроен" || st.Name == "Назначено пособие")
+                        {
+                            error += "У данного соискателя нет направлений на работу, " +
+                                "поэтому статус \"Трудоустроен\" или \"Назначено пособие\" поставить невозможно\n";
+                        }
+                    }
+                    else
+                    {
+                        if(application.ID == 0)
+                        {
+
+                        }
+                        else
+                        {
+                            TimeSpan ts = DateTime.Now.Date - application.DateApplicant.Date;
+                            if(ts.Days < 10)
+                            {
+                                if(st.Name == "Назначено пособие")
+                                {
+                                    error += "Невозможно поставить статус \"Назначено пособие\", " +
+                                        "т.к. прошло менее 10 дней с момента подачи заявления\n";
+                                }
+                            }
+                        }
+                    }
+                }
+                if (application.CommentWorker != null)
                 {
                     if(cmbWork.SelectedIndex == -1)
                     {
@@ -91,12 +123,17 @@ namespace Центр_занятости.windows
                     mp.Play();
                     MessageBox.Show("Данные сохранены", "Внимание",
                         MessageBoxButton.OK);
+                    if(application.ID == 0)
+                    {
+                        Close();
+                    }
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Внимание",
                     MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
             }
         }
 
@@ -136,14 +173,23 @@ namespace Центр_занятости.windows
             }
         }
 
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            mp.Close();
+        }
+
         private void cmbApp_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             app = cmbApp.SelectedItem as Applicants;
         }
 
-        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        private void cmbStatus_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            mp.Close();
+            var st = cmbStatus.SelectedItem as StatusUnemployed;
+            if (st.Name == "Назначено пособие")
+            {
+                cbNoWork.IsChecked = true;
+            }
         }
     }
 }
