@@ -1,0 +1,149 @@
+﻿<Window x:Class="Центр_занятости.windows.wApplicant"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Центр_занятости.windows"
+        mc:Ignorable="d"
+        Style="{StaticResource wGlavn}"
+        x:Name="wind"
+        WindowStartupLocation="CenterScreen"
+        Loaded="wind_Loaded"
+        PreviewKeyDown="wind_PreviewKeyDown">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="75"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="350"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Background="#bcf6c4"/>
+        <StackPanel  Margin="15 0 0 0" 
+                     HorizontalAlignment="Left"
+                     Orientation="Horizontal"
+                     VerticalAlignment="Center">
+            <Image Height="50" Width="50" 
+                   Source="/image/center.png"
+               HorizontalAlignment="Left"/>
+            <TextBlock FontSize="24" 
+                       Margin="10" 
+                       Text="Центр занятости"/>
+        </StackPanel>
+        <Menu Background="#c6fbff" 
+              FontFamily="{Binding ElementName=wind,
+            Path=FontFamily}"
+              Grid.Row="1">
+            <Menu.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Vertical"/>
+                </ItemsPanelTemplate>
+            </Menu.ItemsPanel>
+
+            <MenuItem Name="menuMain" Click="menuMain_Click">
+                <MenuItem.Header>
+                    <StackPanel  Margin="10 0 0 0" 
+                     HorizontalAlignment="Left"
+                     Orientation="Horizontal"
+                     VerticalAlignment="Center">
+                        <Image Height="50" Width="50" 
+                   Source="/image/home.png"
+               HorizontalAlignment="Left"/>
+                        <TextBlock FontSize="24" 
+                       Margin="10" 
+                       Text="Главная"/>
+                    </StackPanel>
+                </MenuItem.Header>
+            </MenuItem>
+
+            <MenuItem x:Name="menuVacancy"
+                      Click="menuVacancy_Click">
+                <MenuItem.Header>
+                    <StackPanel  Margin="10 0 0 0" 
+                     HorizontalAlignment="Left"
+                     Orientation="Horizontal"
+                     VerticalAlignment="Center">
+                        <Image Height="50" Width="50" 
+                   Source="/image/vacancy.png"
+               HorizontalAlignment="Left"/>
+                        <TextBlock FontSize="24" 
+                       Margin="10" 
+                       Text="Вакансии"/>
+                    </StackPanel>
+                </MenuItem.Header>
+            </MenuItem>
+
+            <MenuItem x:Name="menuDocs"
+                      Click="menuDocs_Click">
+                <MenuItem.Header>
+                    <StackPanel  Margin="10 0 0 0" 
+                     HorizontalAlignment="Left"
+                     Orientation="Horizontal"
+                     VerticalAlignment="Center">
+                        <Image Height="50" Width="50" 
+                   Source="/image/doc.png"
+               HorizontalAlignment="Left"/>
+                        <TextBlock FontSize="24" 
+                       Margin="10" 
+                       Text="Документы"/>
+                    </StackPanel>
+                </MenuItem.Header>
+            </MenuItem>
+
+            <MenuItem Name="menuHelp"
+                      Click="menuHelp_Click">
+                <MenuItem.Header>
+                    <StackPanel  Margin="10 0 0 0" 
+                     HorizontalAlignment="Left"
+                     Orientation="Horizontal"
+                     VerticalAlignment="Center">
+                        <Image Height="50" Width="50" 
+                   Source="/image/help.png"
+               HorizontalAlignment="Left"/>
+                        <TextBlock FontSize="24" 
+                       Margin="10" 
+                       Text="Справка"/>
+                    </StackPanel>
+                </MenuItem.Header>
+            </MenuItem>
+
+        </Menu>
+
+        <StackPanel Grid.Row="1"
+                    VerticalAlignment="Bottom"
+                    Margin="10 0 10 0">
+            <StackPanel Orientation="Horizontal">
+                <Image Height="50" Width="50" 
+                   Source="/image/profile.png"
+               HorizontalAlignment="Left"/>
+                <TextBlock x:Name="txtFIO"
+                       Margin="10"
+                           Width="250"
+                           TextWrapping="Wrap"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock FontSize="12">
+                    <Hyperlink Name="txtProfile"
+                               Click="txtProfile_Click">
+                        Редактировать профиль
+                    </Hyperlink>
+                </TextBlock>
+                <TextBlock Margin="10 0 0 0"/>
+                <TextBlock FontSize="12">
+                    <Hyperlink Name="txtAuth" Click="txtAuth_Click">
+                        Сменить пользователя
+                    </Hyperlink>
+                </TextBlock>
+            </StackPanel>
+            <TextBlock 
+                Name="txtToday"
+                FontSize="20"/>
+        </StackPanel>
+
+        <Frame x:Name="frm" 
+               Grid.Column="1"
+               Grid.RowSpan="2"
+               NavigationUIVisibility="Hidden"/>
+    </Grid>
+</Window>

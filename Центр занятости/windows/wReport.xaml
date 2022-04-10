@@ -1,0 +1,87 @@
+﻿<Window x:Class="Центр_занятости.windows.wReport"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Центр_занятости.windows"
+        mc:Ignorable="d"
+        Height="450"
+        Style="{StaticResource windAddRed}"
+        Title="Формирование отчета"
+        WindowStartupLocation="CenterScreen"
+        Loaded="Window_Loaded">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Style="{StaticResource txtAddRed}"
+                   Grid.Row="0" HorizontalAlignment="Right">
+            <Run Foreground="Red">*</Run>
+            <Run Text="От: "/>
+        </TextBlock>
+        <DatePicker Style="{StaticResource dateAddRed}"
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    Name="dtStart">
+            <DatePicker.ToolTip>
+                <ToolTip Content="Начиная с какой даты пойдет формирование отчета"/>
+            </DatePicker.ToolTip>
+        </DatePicker>
+        <TextBlock Style="{StaticResource txtAddRed}"
+                   Grid.Row="1"
+                   HorizontalAlignment="Right">
+            <Run Foreground="Red">*</Run>
+            <Run Text="До: "/>
+        </TextBlock>
+        <DatePicker Style="{StaticResource dateAddRed}"
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    Name="dtFinish">
+            <DatePicker.ToolTip>
+                <ToolTip Content="Заканчивая какой датой завершится формирование отчета"/>
+            </DatePicker.ToolTip>
+        </DatePicker>
+        <TextBlock Style="{StaticResource txtAddRed}"
+                   Grid.Row="2"
+                   HorizontalAlignment="Right">
+            <Run Foreground="Red">*</Run>
+            <Run Text="Центр занятости"/>
+        </TextBlock>
+        <ComboBox x:Name="cmbCenter"
+                  Style="{StaticResource cmbAddRed}"
+                  DisplayMemberPath="Name"
+                  SelectedValuePath="ID"
+                  SelectedValue="{Binding ID_Center}"
+                  IsEditable="True"
+                  MaxDropDownHeight="100"
+                  Grid.Column="1"
+                  Grid.Row="2"
+                  />
+        <Button Style="{StaticResource btnNorm}"
+                Name="btnOK"
+                Grid.Row="3"
+                Grid.Column="2"
+                Content="Сформировать"
+                Click="btnOK_Click">
+            <Button.ToolTip>
+                <ToolTip Content="Сформировать отчет для выбранного центра занятости"/>
+            </Button.ToolTip>
+        </Button>
+        <Button Style="{StaticResource btnNorm}"
+                Name="btnAll"
+                Grid.Row="3"
+                Content="Все центры"
+                Click="btnAll_Click">
+            <Button.ToolTip>
+                <ToolTip Content="Сформировать отчет по всем центрам занятости"/>
+            </Button.ToolTip>
+        </Button>
+    </Grid>
+</Window>

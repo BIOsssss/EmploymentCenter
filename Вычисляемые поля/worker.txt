@@ -1,0 +1,17 @@
+        public string FIO
+        {
+            get
+            {
+                return $"{LastName} {FirstName} {Patronymic}";
+            }
+        }
+
+        public string AbbFIO
+        {
+            get
+            {
+                char I = FirstName[0];
+                char O = Patronymic[0];
+                return $"{LastName} {I}.{O}.";
+            }
+        }

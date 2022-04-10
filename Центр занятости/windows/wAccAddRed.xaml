@@ -1,0 +1,114 @@
+﻿<Window x:Class="Центр_занятости.windows.wAccAddRed"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Центр_занятости.windows"
+        mc:Ignorable="d"
+        Style="{StaticResource windAddRed}"
+        WindowStartupLocation="CenterScreen"
+        Height="450"
+        Width="500">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Style="{StaticResource txtAddRed}"
+                   Grid.Row="0">
+            <Run Foreground="Red">*</Run>
+            <Run>Наименование банка</Run>
+        </TextBlock>
+        <TextBox Style="{StaticResource txbAddRed}"
+                 x:Name="txtName"
+                 Grid.Row="0"
+                 Grid.Column="1"
+                 Text="{Binding NameBank}"
+                 MaxLength="150"/>
+        <TextBlock Style="{StaticResource txtAddRed}"
+                   Grid.Row="1">
+            <Run Foreground="Red">*</Run>
+            <Run>БИК банка</Run>
+        </TextBlock>
+        <TextBox Style="{StaticResource txbAddRed}"
+                 Grid.Row="1"
+                 Grid.Column="1"
+                 Text="{Binding BIK_Bank}"
+                 MaxLength="9"
+                 x:Name="txtBIK"
+                 TextChanged="txtBIK_TextChanged">
+            <TextBox.ToolTip>
+                <ToolTip Content="Формат БИК: XXXXXXXXX, где X - цифры от 0 до 9"/>
+            </TextBox.ToolTip>
+        </TextBox>
+        <TextBlock Style="{StaticResource txtAddRed}"
+                   Grid.Row="2">
+            <Run Foreground="Red">*</Run>
+            <Run>ИНН банка</Run>
+        </TextBlock>
+        <TextBox Style="{StaticResource txbAddRed}"
+                 Grid.Row="2"
+                 Grid.Column="1"
+                 Text="{Binding INN_Bank}"
+                 MaxLength="12"
+                 x:Name="txtINN"
+                 TextChanged="txtINN_TextChanged">
+            <TextBox.ToolTip>
+                <ToolTip Content="Формат ИНН: XXXXXXXXXX, где X - цифры от 0 до 9"/>
+            </TextBox.ToolTip>
+        </TextBox>
+        <TextBlock Style="{StaticResource txtAddRed}"
+                   Grid.Row="3">
+            <Run Foreground="Red">*</Run>
+            <Run>Корреспондентский счет</Run>
+        </TextBlock>
+        <TextBox x:Name="txtCor"
+                 MaxLength="20"
+                 Style="{StaticResource txbAddRed}"
+                 Text="{Binding CoresspodentAcc}"
+                 Grid.Column="1"
+                 Grid.Row="3"
+                 TextChanged="txtCor_TextChanged">
+            <TextBox.ToolTip>
+                <ToolTip Content="Формат счета: XXXXXXXXXXXXXXXX, где X - цифры от 0 до 9"/>
+            </TextBox.ToolTip>
+        </TextBox>
+        <TextBlock Style="{StaticResource txtAddRed}"
+                   Grid.Row="4">
+            <Run Foreground="Red">*</Run>
+            <Run>Счет соискателя</Run>
+        </TextBlock>
+        <TextBox x:Name="txtAcc"
+                 MaxLength="20"
+                 Style="{StaticResource txbAddRed}"
+                 Text="{Binding AccountCitizen}"
+                 Grid.Column="1"
+                 Grid.Row="4"
+                 TextChanged="txtAcc_TextChanged">
+            <TextBox.ToolTip>
+                <ToolTip Content="Формат счета: XXXXXXXXXXXXXXXX, где X - цифры от 0 до 9"/>
+            </TextBox.ToolTip>
+        </TextBox>
+        <Button x:Name="bntOK"
+                Style="{StaticResource btnNorm}"
+                Content="Сохранить"
+                Height="40"
+                Grid.Row="7"
+                Grid.Column="2"
+                Click="bntOK_Click"/>
+        <Button x:Name="btnDel"
+                Style="{StaticResource btnNorm}"
+                Grid.Row="7"
+                Content="Удалить"
+                Height="40"
+                Click="btnDel_Click"/>
+    </Grid>
+</Window>

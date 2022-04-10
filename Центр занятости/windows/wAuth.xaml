@@ -1,0 +1,72 @@
+﻿<Window x:Class="Центр_занятости.windows.wAuth"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Центр_занятости.windows"
+        mc:Ignorable="d" FontFamily="Segoe Print"
+        WindowStartupLocation="CenterScreen"
+        Title="Авторизация" Height="450" Width="350"
+        ResizeMode="NoResize" Background="#c6fbff"
+        PreviewKeyDown="Window_PreviewKeyDown">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <StackPanel VerticalAlignment="Center" 
+                    HorizontalAlignment="Center">
+            <Image Width="80" Height="80" 
+                   Margin="0 0 0 50"
+                   Source="/image/center.png"/>
+            <TextBlock Text="Авторизация" 
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Center" 
+                       Margin="0 -50 0 0"
+                       FontSize="20"/>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Margin="10 0 10 0">
+
+            <StackPanel Orientation="Horizontal"
+                        Margin="0 0 0 10">
+                <TextBlock Text="Имя пользователя"
+                           Margin="0 0 10 0"/>
+                <TextBox Width="150"
+                         Name="txtName"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Пароль"
+                           Margin="75 0 10 0"/>
+                <PasswordBox Width="150"
+                             Name="pasBx"/>
+                <Button Width="25"
+                        Name="btnCheck"
+                        Click="btnCheck_Click"
+                        Background="Transparent"
+                        BorderBrush="Transparent">
+                    <iconPacks:PackIconMaterial 
+                        Name="imgCheck"
+                        Kind="EyeCheckOutline"/>
+                </Button>
+            </StackPanel>
+
+        </StackPanel>
+
+        <TextBox Width="150"
+                 Height="23.18"
+                 Grid.Row="1"
+                 Margin="93 0 0 117.3"
+                 Visibility="Hidden"
+                 Name="txtPas"/>
+
+        <Button Width="150" Height="50"
+                Background="#bcf6c4"
+                Grid.Row="1"
+                Name="btnOK"
+                Content="Войти"
+                FontSize="20"
+                Click="btnOK_Click"/>
+    </Grid>
+</Window>

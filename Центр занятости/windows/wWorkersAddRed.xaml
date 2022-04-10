@@ -1,0 +1,116 @@
+﻿<Window x:Class="Центр_занятости.windows.wWorkersAddRed"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Центр_занятости.windows"
+        mc:Ignorable="d"
+        Style="{StaticResource windAddRed}"
+        Height="450" Width="450"
+        Loaded="Window_Loaded"
+        WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Style="{StaticResource txtAddRed}"
+                   Grid.Row="0">
+            <Run Foreground="Red">*</Run>
+            <Run>Фамилия</Run>
+        </TextBlock>
+        <TextBox Style="{StaticResource txbAddRed}"
+                 Grid.Row="0"
+                 Grid.Column="1"
+                 Text="{Binding LastName}"
+                 MaxLength="30"/>
+        <TextBlock Style="{StaticResource txtAddRed}"
+                   Grid.Row="1">
+            <Run Foreground="Red">*</Run>
+            <Run>Имя</Run>
+        </TextBlock>
+        <TextBox Style="{StaticResource txbAddRed}"
+                 Grid.Row="1"
+                 Grid.Column="1"
+                 Text="{Binding FirstName}"
+                 MaxLength="30"/>
+        <TextBlock Style="{StaticResource txtAddRed}"
+                   Grid.Row="2"
+                   Text="Отчество"/>
+        <TextBox Style="{StaticResource txbAddRed}"
+                 Grid.Row="2"
+                 Grid.Column="1"
+                 Text="{Binding Patronymic}"
+                 MaxLength="30"/>
+        <TextBlock Style="{StaticResource txtAddRed}"
+                   Grid.Row="3">
+            <Run Foreground="Red">*</Run>
+            <Run>Пол</Run>
+        </TextBlock>
+        <ComboBox Name="cmbGender"
+                  Style="{StaticResource cmbAddRed}"
+                  Grid.Row="3"
+                  Grid.Column="1"
+                  DisplayMemberPath="Name"
+                  SelectedValuePath="ID"
+                  SelectedValue="{Binding Gender}"/>
+        <TextBlock Style="{StaticResource txtAddRed}"
+                   Grid.Row="4">
+            <Run Foreground="Red">*</Run>
+            <Run>Дата рождения</Run>
+        </TextBlock>
+        <DatePicker Name="dateBirthday"
+                    Style="{StaticResource dateAddRed}"
+                    Grid.Column="1"
+                    Grid.Row="4"
+                    SelectedDate="{Binding Birthday,
+            StringFormat={}{0:dd.MM.yyyy}}"/>
+        <TextBlock Style="{StaticResource txtAddRed}"
+                   Grid.Row="5">
+            <Run Foreground="Red">*</Run>
+            <Run>Центр занятости</Run>
+        </TextBlock>
+        <ComboBox Name="cmbCenter"
+                  Style="{StaticResource cmbAddRed}"
+                  Grid.Column="1"
+                  Grid.Row="5"
+                  DisplayMemberPath="Name"
+                  SelectedValuePath="ID"
+                  SelectedValue="{Binding ID_Center}"
+                  IsEditable="True"
+                  MaxDropDownHeight="100"/>
+        <TextBlock Style="{StaticResource txtAddRed}"
+                   Grid.Row="6">
+            <Run Foreground="Red">*</Run>
+            <Run>Зарплата, руб.</Run>
+        </TextBlock>
+        <TextBox Style="{StaticResource txbAddRed}"
+                 Grid.Row="6"
+                 Grid.Column="1"
+                 Text="{Binding Wages,
+            StringFormat={}{0:0}}"/>
+        <Button x:Name="bntOK"
+                Style="{StaticResource btnNorm}"
+                Content="Сохранить"
+                Height="40"
+                Grid.Row="7"
+                Grid.Column="2"
+                Click="bntOK_Click"/>
+        <Button x:Name="btnDel"
+                Style="{StaticResource btnNorm}"
+                Grid.Row="7"
+                Content="Удалить"
+                Height="40"
+                Click="btnDel_Click"/>
+    </Grid>
+</Window>

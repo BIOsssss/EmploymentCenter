@@ -1,0 +1,102 @@
+﻿<Page x:Class="Центр_занятости.pages.pZayav"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Центр_занятости.pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="1200"
+      Title="pZayav"
+      Style="{StaticResource page}">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="75"/>
+        </Grid.RowDefinitions>
+        <DataGrid Grid.Row="0"
+            IsReadOnly="True" AutoGenerateColumns="False"
+                  x:Name="grZayav">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Соискатель"
+                                    Binding="{Binding Applicants.FIO}"/>
+                <DataGridTextColumn Header="Дата подачи" 
+                                    Binding="{Binding DateApplicant, 
+                    StringFormat={}{0:dd.MM.yyyy}}"/>
+                <DataGridTextColumn Header="Время подачи" 
+                                    Binding="{Binding TimeApplicant, 
+                    StringFormat={}{0:HH:mm}}"/>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Style="{StaticResource btnNorm}"
+                                    x:Name="btnPrint"
+                                    Content="Печать"
+                                    Click="btnPrint_Click"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Style="{StaticResource btnNorm}"
+                                    x:Name="btnInfo"
+                                    Content="Подробнее"
+                                    Click="btnInfo_Click"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <StackPanel Grid.Row="1"
+                    Style="{StaticResource stNav}"
+                    Margin="10 0 0 0">
+            <Button x:Name="btnFirst"
+                    Style="{StaticResource btnNav}"
+                    Content="&lt;&lt;"
+                    Click="btnFirst_Click"/>
+            <Button x:Name="btnBack"
+                    Style="{StaticResource btnNav}"
+                    Content="&lt;"
+                    Click="btnBack_Click"/>
+            <TextBox Style="{StaticResource txbNav}"
+                     x:Name="txtCount"/>
+            <TextBlock Text="из"
+                       Style="{StaticResource txtNav}"/>
+            <TextBlock Text="N"
+                       x:Name="txtTotal"
+                       Style="{StaticResource txtNav}"/>
+            <Button x:Name="btnNext"
+                    Style="{StaticResource btnNav}"
+                    Content="&gt;"
+                    Click="btnNext_Click"/>
+            <Button x:Name="btnLast"
+                    Style="{StaticResource btnNav}"
+                    Content="&gt;&gt;"
+                    Click="btnLast_Click"/>
+        </StackPanel>
+
+        <Button x:Name="btnDel"
+                Content="Удалить"
+                Margin="375 0 0 0"
+                Style="{StaticResource btnNorm}"
+                Grid.Row="2"
+                Click="btnDel_Click"/>
+
+        <Button x:Name="btnRed"
+                Content="Изменить"
+                Style="{StaticResource btnNorm}"
+                Grid.Row="2"
+                HorizontalAlignment="Right"
+                Margin="0 0 170 0"
+                Click="btnRed_Click"/>
+
+        <Button x:Name="btnAdd"
+                Content="Создать"
+                HorizontalAlignment="Right"
+                Margin="0 0 10 0"
+                Style="{StaticResource btnNorm}"
+                Grid.Row="2"
+                Click="btnAdd_Click"/>
+    </Grid>
+</Page>

@@ -1,0 +1,7 @@
+        public string Adres
+        {
+            get
+            {
+                return $"{Localities.Name}, {Street}, {Flat}";
+            }
+        }

@@ -1,0 +1,146 @@
+﻿<Page x:Class="Центр_занятости.pages.pVacancies"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Центр_занятости.pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="1200"
+      Title="pVacancies"
+      Style="{StaticResource page}">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition/>
+            <RowDefinition Height="89"/>
+        </Grid.RowDefinitions>
+        <TextBox Style="{StaticResource txbAddRed}"
+                 Name="txtName"
+                 Width="800"
+                 HorizontalAlignment="Left"
+                 Margin="10 0 0 0"
+                 Height="40"
+                 Text="Начните вводить название вакансии..."
+                 PreviewMouseLeftButtonDown="txtName_PreviewMouseLeftButtonDown"
+                 FontSize="20"
+                 MaxLength="100"
+                 TextChanged="txtName_TextChanged"/>
+        <Button x:Name="btnFiltr"
+                Style="{StaticResource btnNorm}"
+                Content="Все фильтры"
+                HorizontalAlignment="Right"
+                Margin="0 0 200 0"
+                Height="40"
+                Click="btnFiltr_Click"/>
+        <Button x:Name="btnInv"
+                Style="{StaticResource btnAdd}"
+                HorizontalAlignment="Right"
+                Margin="0 0 135 0"
+                Height="40"
+                Width="40"
+                BorderBrush="Transparent"
+                Background="Transparent"
+                Click="btnInv_Click">
+            <Image Source="/image/invalid.jpg"
+                   Width="40"
+                   Height="40"/>
+            <Button.ToolTip>
+                <ToolTip Content="Показать вакансии с трудоустройством инвалидов"/>
+            </Button.ToolTip>
+        </Button>
+        <Button x:Name="btnArchiv"
+                Style="{StaticResource btnNorm}"
+                Width="100"
+                Height="40"
+                Content="Архив"
+                HorizontalAlignment="Right"
+                Margin="0 0 10 0"
+                Click="btnArchiv_Click"/>
+        <DataGrid Grid.Row="1"
+            IsReadOnly="True" AutoGenerateColumns="False"
+                  x:Name="grVacancy">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Организация" 
+                                    Binding="{Binding Organization.AbbreviatedName}"/>
+                <DataGridTextColumn Header="Название вакансии"
+                                    Binding="{Binding Header}"/>
+                <DataGridTextColumn Header="Заработная плата, руб." 
+                                    Binding="{Binding Wages, 
+                    StringFormat={}{0:0}}"/>
+                <DataGridTextColumn Header="Дата публикации" 
+                                    Binding="{Binding Date, 
+                    StringFormat={}{0:dd.MM.yyyy}}"/>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Style="{StaticResource btnNorm}"
+                                    x:Name="btnInfo"
+                                    Content="Подробнее"
+                                    Click="btnInfo_Click"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button x:Name="btnClear"
+                Content="Очистить фильтры"
+                Margin="10 0 0 0"
+                Style="{StaticResource btnNorm}"
+                Width="200"
+                Grid.Row="2"
+                HorizontalAlignment="Left"
+                Click="btnClear_Click"/>
+
+        <StackPanel Grid.Row="2"
+                    Style="{StaticResource stNav}"
+                    Margin="250 0 0 0">
+            <Button x:Name="btnFirst"
+                    Style="{StaticResource btnNav}"
+                    Content="&lt;&lt;"
+                    Click="btnFirst_Click"/>
+            <Button x:Name="btnBack"
+                    Style="{StaticResource btnNav}"
+                    Content="&lt;"
+                    Click="btnBack_Click"/>
+            <TextBox Style="{StaticResource txbNav}"
+                     x:Name="txtCount"/>
+            <TextBlock Text="из"
+                       Style="{StaticResource txtNav}"/>
+            <TextBlock Text="N"
+                       x:Name="txtTotal"
+                       Style="{StaticResource txtNav}"/>
+            <Button x:Name="btnNext"
+                    Style="{StaticResource btnNav}"
+                    Content="&gt;"
+                    Click="btnNext_Click"/>
+            <Button x:Name="btnLast"
+                    Style="{StaticResource btnNav}"
+                    Content="&gt;&gt;"
+                    Click="btnLast_Click"/>
+        </StackPanel>
+        
+
+        <Button x:Name="btnDel"
+                Content="Удалить"
+                Margin="375 0 0 0"
+                Style="{StaticResource btnNorm}"
+                Grid.Row="2"
+                Click="btnDel_Click"/>
+
+        <Button x:Name="btnRed"
+                Content="Изменить"
+                Style="{StaticResource btnNorm}"
+                Grid.Row="2"
+                HorizontalAlignment="Right"
+                Margin="0 0 170 0"
+                Click="btnRed_Click"/>
+
+        <Button x:Name="btnAdd"
+                Content="Создать"
+                HorizontalAlignment="Right"
+                Margin="0 0 10 0"
+                Style="{StaticResource btnNorm}"
+                Grid.Row="2"
+                Click="btnAdd_Click"/>
+    </Grid>
+</Page>

@@ -1,0 +1,24 @@
+        public string Org
+        {
+            get
+            {
+                string s = "";
+                foreach (var x in Organization)
+                {
+                    s = x.AbbreviatedName;
+                }
+                return s;
+            }
+            set
+            {
+
+            }
+        }
+
+        public string FIO
+        {
+            get
+            {
+                return $"{LastName} {FirstName} {Patronymic}";
+            }
+        }

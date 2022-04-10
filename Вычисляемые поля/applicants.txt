@@ -1,0 +1,165 @@
+        public string Opyt
+        {
+            get
+            {
+                int sumG = 0;
+                int sumM = 0;
+                int sum = 0;
+                foreach (var x in ExpWorkUnemployed)
+                {
+                    if(x.DateOfDismissal == null)
+                    {
+                        x.DateOfDismissal = DateTime.Now;
+                    }
+                    TimeSpan? ts = x.DateOfDismissal - x.DateStart;
+                    sum += ts.Value.Days;
+                }
+                sumM = sum / 28;
+                sumG = sum / 30 / 12;
+                if (sumG == 0 && sumM == 0)
+                {
+                    return "нету";
+                }
+                else if (sumG == 0 && sumM > 0)
+                {
+                    if (sumM == 1)
+                    {
+                        return $"{sumM} месяц";
+                    }
+                    else if (sumM >= 2 && sumM <= 4)
+                    {
+                        return $"{sumM} месяца";
+                    }
+                    else
+                    {
+                        return $"{sumM} месяцев";
+                    }
+                }
+                else if (sumG > 0)
+                {
+                    if (sumG == 1)
+                    {
+                        return $"{sumG} год";
+                    }
+                    else if (sumG >= 2 && sumG <= 4)
+                    {
+                        return $"{sumG} года";
+                    }
+                    else if (sumG >= 5 && sumG <= 20)
+                    {
+                        return $"{sumG} лет";
+                    }
+                    else
+                    {
+                        if (sumG % 10 == 1)
+                        {
+                            return $"{sumG} год";
+                        }
+                        else if (sumG % 10 >= 2 && sumG % 10 <= 4)
+                        {
+                            return $"{sumG} года";
+                        }
+                        else
+                        {
+                            return $"{sumG} лет";
+                        }
+                    }
+                }
+                else return "нету";
+            }
+            
+            set
+            {
+
+            }
+        }
+
+        public string Adres
+        {
+            get
+            {
+                if(RegistrationAddress == null)
+                {
+                    return "";
+                }
+                else return $"{RegistrationAddress.Localities.Name}, " +
+                    $"{RegistrationAddress.Street}, " +
+                    $"{RegistrationAddress.Flat}";
+            }
+            set
+            {
+
+            }
+        }
+
+        public string Pasp
+        {
+            get
+            {
+                if(Passport == null)
+                {
+                    return "";
+                }
+                else return $"{Passport1.Series} {Passport1.Number}";
+            }
+            set
+            {
+
+            }
+        }
+
+        public string Acc
+        {
+            get
+            {
+                if (PaymentAcc == null) return "";
+                else return $"{PaymentAccount.AccountCitizen}";
+            }
+            set
+            {
+
+            }
+        }
+
+        public string FIO
+        {
+            get
+            {
+                if(LastName == null && FirstName == null &&
+                    Patronymic == null)
+                {
+                    return "";
+                }
+                else return $"{LastName} {FirstName} {Patronymic}";
+            }
+        }
+
+        public string Gen
+        {
+            get
+            {
+                if (Genders.Name == "Мужской") return "Гражданин";
+                else if (Genders.Name == "Женский") return "Гражданка";
+                else return "";
+            }
+        }
+
+        public string Ge
+        {
+            get
+            {
+                if (Gen == "Гражданин") return "отказался";
+                else if (Gen == "Гражданка") return "отказалась";
+                else return "";
+            }
+        }
+
+        public string AbbFIO
+        {
+            get
+            {
+                char I = FirstName[0];
+                char O = Patronymic[0];
+                return $"{LastName} {I}.{O}.";
+            }
+        }

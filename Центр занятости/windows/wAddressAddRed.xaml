@@ -1,0 +1,114 @@
+﻿<Window x:Class="Центр_занятости.windows.wAddressAddRed"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Центр_занятости.windows"
+        mc:Ignorable="d"
+        Style="{StaticResource windAddRed}"
+        WindowStartupLocation="CenterScreen"
+        Height="450">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Style="{StaticResource txtAddRed}"
+                   Grid.Row="0">
+            <Run Foreground="Red">*</Run>
+            <Run>Прописка</Run>
+        </TextBlock>
+        <ComboBox Name="cmbType"
+                  Style="{StaticResource cmbAddRed}"
+                  Grid.Row="0"
+                  Grid.Column="1"
+                  DisplayMemberPath="Name"
+                  SelectedValuePath="ID"
+                  SelectedValue="{Binding Type}"/>
+        <TextBlock Style="{StaticResource txtAddRed}"
+                   Grid.Row="1">
+            <Run Foreground="Red">*</Run>
+            <Run>Регион</Run>
+        </TextBlock>
+        <ComboBox Name="cmbReg"
+                  Style="{StaticResource cmbAddRed}"
+                  Grid.Row="1"
+                  Grid.Column="1"
+                  DisplayMemberPath="Name"
+                  SelectedValuePath="ID"
+                  SelectedValue="{Binding Region}"
+                  IsEditable="True"
+                  MaxDropDownHeight="100"
+                  SelectionChanged="cmbReg_SelectionChanged"/>
+        <TextBlock Style="{StaticResource txtAddRed}"
+                   Grid.Row="2">
+            <Run Foreground="Red">*</Run>
+            <Run>Город</Run>
+        </TextBlock>
+        <ComboBox Name="cmbLoc"
+                  Style="{StaticResource cmbAddRed}"
+                  Grid.Column="1"
+                  Grid.Row="2"
+                  DisplayMemberPath="Name"
+                  SelectedValuePath="ID"
+                  SelectedValue="{Binding Locality}"
+                  IsEditable="True"
+                  MaxDropDownHeight="100"/>
+        <TextBlock Style="{StaticResource txtAddRed}"
+                   Grid.Row="3">
+            <Run Foreground="Red">*</Run>
+            <Run>Улица, дом, корпус</Run>
+        </TextBlock>
+        <TextBox Style="{StaticResource txbAddRed}"
+                 Grid.Row="3"
+                 Grid.Column="1"
+                 Text="{Binding Street}"
+                 MaxLength="50"/>
+        <TextBlock Style="{StaticResource txtAddRed}"
+                   Grid.Row="4">
+            <Run Foreground="Red">*</Run>
+            <Run>Квартира</Run>
+        </TextBlock>
+        <TextBox Style="{StaticResource txbAddRed}"
+                 x:Name="txtFlat"
+                 TextChanged="txtFlat_TextChanged"
+                 Grid.Row="4"
+                 Grid.Column="1"
+                 Text="{Binding Flat}"
+                 MaxLength="4"/>
+        <TextBlock Style="{StaticResource txtAddRed}"
+                   Grid.Row="5">
+            <Run Foreground="Red">*</Run>
+            <Run>Почтовый индекс</Run>
+        </TextBlock>
+        <TextBox Style="{StaticResource txbAddRed}"
+                 x:Name="txtCode"
+                 Grid.Row="5"
+                 Grid.Column="1"
+                 Text="{Binding PostalCode}"
+                 MaxLength="6"
+                 TextChanged="txtCode_TextChanged"/>
+        <Button x:Name="bntOK"
+                Style="{StaticResource btnNorm}"
+                Content="Сохранить"
+                Height="40"
+                Grid.Row="7"
+                Grid.Column="2"
+                Click="bntOK_Click"/>
+        <Button x:Name="btnDel"
+                Style="{StaticResource btnNorm}"
+                Grid.Row="7"
+                Content="Удалить"
+                Height="40"
+                Click="btnDel_Click"/>
+    </Grid>
+</Window>

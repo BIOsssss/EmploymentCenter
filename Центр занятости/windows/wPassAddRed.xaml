@@ -1,0 +1,85 @@
+﻿<Window x:Class="Центр_занятости.windows.wPassAddRed"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Центр_занятости.windows"
+        mc:Ignorable="d"
+        Style="{StaticResource windAddRed}"
+        WindowStartupLocation="CenterScreen"
+        Height="450"
+        Loaded="Window_Loaded">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Style="{StaticResource txtAddRed}"
+                   Grid.Row="0">
+            <Run Foreground="Red">*</Run>
+            <Run>Серия</Run>
+        </TextBlock>
+        <TextBox Style="{StaticResource txbAddRed}"
+                 x:Name="txtSer"
+                 Grid.Row="0"
+                 Grid.Column="1"
+                 Text="{Binding Series}"
+                 MaxLength="4"
+                 TextChanged="txtSer_TextChanged"/>
+        <TextBlock Style="{StaticResource txtAddRed}"
+                   Grid.Row="1">
+            <Run Foreground="Red">*</Run>
+            <Run>Номер</Run>
+        </TextBlock>
+        <TextBox Style="{StaticResource txbAddRed}"
+                 Grid.Row="1"
+                 Grid.Column="1"
+                 Text="{Binding Number}"
+                 x:Name="txtNum"
+                 MaxLength="6"
+                 TextChanged="txtNum_TextChanged"/>
+        <TextBlock Style="{StaticResource txtAddRed}"
+                   Grid.Row="2">
+            <Run Foreground="Red">*</Run>
+            <Run>Кем выдан</Run>
+        </TextBlock>
+        <TextBox Style="{StaticResource txbAddRed}"
+                 Grid.Row="2"
+                 Grid.Column="1"
+                 MaxLength="150"
+                 Text="{Binding Issued}"/>
+        <TextBlock Style="{StaticResource txtAddRed}"
+                   Grid.Row="3">
+            <Run Foreground="Red">*</Run>
+            <Run>Дата выдачи</Run>
+        </TextBlock>
+        <DatePicker x:Name="dateIss"
+                    Style="{StaticResource dateAddRed}"
+                    Grid.Column="1"
+                    Grid.Row="3"
+                    SelectedDate="{Binding IssDate}">
+
+        </DatePicker>
+        <Button x:Name="bntOK"
+                Style="{StaticResource btnNorm}"
+                Content="Сохранить"
+                Height="40"
+                Grid.Row="7"
+                Grid.Column="2"
+                Click="bntOK_Click"/>
+        <Button x:Name="btnDel"
+                Style="{StaticResource btnNorm}"
+                Grid.Row="7"
+                Content="Удалить"
+                Height="40"
+                Click="btnDel_Click"/>
+    </Grid>
+</Window>

@@ -1,0 +1,54 @@
+﻿<Page x:Class="Центр_занятости.pages.pUsers"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Центр_занятости.pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="1200"
+      Title="pUsers" FontSize="20" Style="{StaticResource page}">
+
+    <StackPanel Orientation="Horizontal"
+                x:Name="stUsers"
+                VerticalAlignment="Center"
+                Margin="200 0 10 0">
+
+        <Button Margin="0 0 175 0"
+                Name="btnWork"
+                Background="Transparent"
+                BorderBrush="Transparent"
+                Click="btnWork_Click">
+            <StackPanel Orientation="Vertical">
+                <Image Width="100"
+                   Height="100"
+                   Source="/image/workers.png"/>
+                <TextBlock Text="Инспектора"/>
+            </StackPanel>
+        </Button>
+        <Button Margin="0 0 175 0"
+                Name="btnApp"
+                Background="Transparent"
+                BorderBrush="Transparent"
+                Click="btnApp_Click">
+            <StackPanel Orientation="Vertical">
+                <Image Width="100"
+                   Height="100"
+                   Source="/image/applicants.png"/>
+                <TextBlock Text="Соискатели"/>
+            </StackPanel>
+        </Button>
+        <Button Margin="0 0 100 0"
+                Name="btnMan"
+                Background="Transparent"
+                BorderBrush="Transparent"
+                Click="btnMan_Click">
+            <StackPanel Orientation="Vertical">
+                <Image Width="100"
+                   Height="100"
+                   Source="/image/managers.png"/>
+                <TextBlock Text="Менеджеры"/>
+            </StackPanel>
+        </Button>
+
+    </StackPanel>
+</Page>
