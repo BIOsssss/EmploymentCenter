@@ -63,13 +63,16 @@ namespace Центр_занятости.windows
                 workBook = excelApp.Workbooks.Add();
 
                 //создание листов
-                excelApp.SheetsInNewWorkbook = 2;
+                excelApp.SheetsInNewWorkbook = 3;
 
-                Excel.Worksheet worksheet1 = (Excel.Worksheet)excelApp.Worksheets.get_Item(2);
+                Excel.Worksheet worksheet1 = (Excel.Worksheet)excelApp.Worksheets.get_Item(3);
                 worksheet1.Name = "Трудоустройство";
 
                 Excel.Worksheet worksheet3 = (Excel.Worksheet)excelApp.Worksheets.get_Item(1);
                 worksheet3.Name = "Соискатели";
+
+                Excel.Worksheet worksheet2 = (Excel.Worksheet)excelApp.Worksheets.get_Item(2);
+                worksheet2.Name = "Вакансии";
 
                 //Трудоустройство
 
@@ -272,23 +275,23 @@ namespace Центр_занятости.windows
                     }
                     else
                     {
-                        worksheet3.Cells[n, 3] = item.Key;
-                        worksheet3.Cells[n, 4] = item.Value;
+                        worksheet2.Cells[n, 3] = item.Key;
+                        worksheet2.Cells[n, 4] = item.Value;
                         n++;
                     }
                 }
 
-                worksheet3.Cells[39, 4] = "Кол-во ваканский";
+                worksheet2.Cells[39, 4] = "Кол-во ваканский";
 
-                Excel.ChartObjects chart1Objects = (Excel.ChartObjects)worksheet3.ChartObjects();
-                Excel.ChartObject chart1Object = chart1Objects.Add(255, 100, 250, 300);
+                Excel.ChartObjects chart1Objects = (Excel.ChartObjects)worksheet2.ChartObjects();
+                Excel.ChartObject chart1Object = chart1Objects.Add(500, 50, 250, 300);
                 Excel.Chart chart1 = chart1Object.Chart;
 
-                Excel.Range rngV = worksheet3.Range[worksheet3.Cells[39, 3], worksheet3.Cells[44, 4]];
+                Excel.Range rngV = worksheet2.Range[worksheet2.Cells[39, 3], worksheet2.Cells[44, 4]];
                 chart1.SetSourceData(rngV);
                 chart1.ChartType = Excel.XlChartType.xlColumnClustered;
                 chart1.HasTitle = true;
-                chart1.ChartTitle.Text = "ТОП 5 профессий по вакансиям";
+                chart1.ChartTitle.Text = "ТОП-5 профессий по вакансиям";
                 chart1.HasLegend = true;
 
                 Dictionary<string, int> topApp = new Dictionary<string, int>();
@@ -323,14 +326,14 @@ namespace Центр_занятости.windows
                 worksheet3.Cells[39, 7] = "Кол-во соискателей";
 
                 Excel.ChartObjects chart2Objects = (Excel.ChartObjects)worksheet3.ChartObjects();
-                Excel.ChartObject chart2Object = chart2Objects.Add(500, 100, 250, 300);
+                Excel.ChartObject chart2Object = chart2Objects.Add(255, 100, 250, 300);
                 Excel.Chart chart2 = chart2Object.Chart;
 
                 Excel.Range rngA = worksheet3.Range[worksheet3.Cells[39, 6], worksheet3.Cells[44, 7]];
                 chart2.SetSourceData(rngA);
                 chart2.ChartType = Excel.XlChartType.xl3DBarStacked;
                 chart2.HasTitle = true;
-                chart2.ChartTitle.Text = "ТОП 5 профессий среди соискателей";
+                chart2.ChartTitle.Text = "ТОП-5 профессий среди соискателей";
                 chart2.HasLegend = true;
 
                 //включаемся
@@ -373,13 +376,16 @@ namespace Центр_занятости.windows
                 workBook = excelApp.Workbooks.Add();
 
                 //создание листов
-                excelApp.SheetsInNewWorkbook = 2;
+                excelApp.SheetsInNewWorkbook = 3;
 
-                Excel.Worksheet worksheet1 = (Excel.Worksheet)excelApp.Worksheets.get_Item(2);
+                Excel.Worksheet worksheet1 = (Excel.Worksheet)excelApp.Worksheets.get_Item(3);
                 worksheet1.Name = "Трудоустройство";
 
                 Excel.Worksheet worksheet3 = (Excel.Worksheet)excelApp.Worksheets.get_Item(1);
                 worksheet3.Name = "Соискатели";
+
+                Excel.Worksheet worksheet2 = (Excel.Worksheet)excelApp.Worksheets.get_Item(2);
+                worksheet2.Name = "Вакансии";
 
                 //Трудоустройство
 
@@ -609,23 +615,23 @@ namespace Центр_занятости.windows
                     }
                     else
                     {
-                        worksheet3.Cells[n, 3] = item.Key;
-                        worksheet3.Cells[n, 4] = item.Value;
+                        worksheet2.Cells[n, 3] = item.Key;
+                        worksheet2.Cells[n, 4] = item.Value;
                         n++;
                     }
                 }
 
-                worksheet3.Cells[39, 4] = "Кол-во ваканский";
+                worksheet2.Cells[39, 4] = "Кол-во ваканский";
 
-                Excel.ChartObjects chart1Objects = (Excel.ChartObjects)worksheet3.ChartObjects();
-                Excel.ChartObject chart1Object = chart1Objects.Add(255, 100, 250, 300);
+                Excel.ChartObjects chart1Objects = (Excel.ChartObjects)worksheet2.ChartObjects();
+                Excel.ChartObject chart1Object = chart1Objects.Add(500, 50, 250, 300);
                 Excel.Chart chart1 = chart1Object.Chart;
 
-                Excel.Range rngV = worksheet3.Range[worksheet3.Cells[39, 3], worksheet3.Cells[44, 4]];
+                Excel.Range rngV = worksheet2.Range[worksheet2.Cells[39, 3], worksheet2.Cells[44, 4]];
                 chart1.SetSourceData(rngV);
                 chart1.ChartType = Excel.XlChartType.xlColumnClustered;
                 chart1.HasTitle = true;
-                chart1.ChartTitle.Text = "ТОП 5 профессий по вакансиям";
+                chart1.ChartTitle.Text = "ТОП-5 профессий по вакансиям";
                 chart1.HasLegend = true;
 
                 Dictionary<string, int> topApp = new Dictionary<string, int>();
@@ -660,14 +666,14 @@ namespace Центр_занятости.windows
                 worksheet3.Cells[39, 7] = "Кол-во соискателей";
 
                 Excel.ChartObjects chart2Objects = (Excel.ChartObjects)worksheet3.ChartObjects();
-                Excel.ChartObject chart2Object = chart2Objects.Add(500, 100, 250, 300);
+                Excel.ChartObject chart2Object = chart2Objects.Add(255, 100, 250, 300);
                 Excel.Chart chart2 = chart2Object.Chart;
 
                 Excel.Range rngA = worksheet3.Range[worksheet3.Cells[39, 6], worksheet3.Cells[44, 7]];
                 chart2.SetSourceData(rngA);
                 chart2.ChartType = Excel.XlChartType.xl3DBarStacked;
                 chart2.HasTitle = true;
-                chart2.ChartTitle.Text = "ТОП 5 профессий среди соискателей";
+                chart2.ChartTitle.Text = "ТОП-5 профессий среди соискателей";
                 chart2.HasLegend = true;
 
                 //включаемся

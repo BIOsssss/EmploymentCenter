@@ -85,7 +85,7 @@ namespace Центр_занятости.windows
                 else
                 {
                     string file = org.Image;
-                    string path = $@"{Environment.CurrentDirectory}{file}";
+                    string path = $@"{Environment.CurrentDirectory.Remove(Environment.CurrentDirectory.Length - 10, 10)}{file}";
                     FileInfo fileInfo = new FileInfo(path);
                     if (fileInfo.Exists)
                     {
@@ -385,8 +385,8 @@ namespace Центр_занятости.windows
                 img.Source = new BitmapImage(new Uri(file));
                 string[] f = file.Split('\\');
                 string fl = f[f.Length - 1];
-                string fImg = $@"\image\{fl}";
-                string path = $@"{Environment.CurrentDirectory}{fImg}";
+                string fImg = $@"\images\{fl}";
+                string path = $@"{Environment.CurrentDirectory.Remove(Environment.CurrentDirectory.Length - 10, 10)}{fImg}";
                 FileInfo fileInfo = new FileInfo(file);
                 if (fileInfo.Exists)
                 {

@@ -428,6 +428,9 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>MyModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <None Include="docs\application.dot" />
+    <None Include="docs\reference.dot" />
+    <None Include="docs\stipend.dot" />
     <None Include="MyModel.edmx.diagram">
       <DependentUpon>MyModel.edmx</DependentUpon>
     </None>
@@ -531,6 +534,10 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="image\invalid.jpg" />
+    <Content Include="music\elevator.mp3" />
+    <Content Include="music\money.mp3" />
+    <Content Include="music\pechat.mp3" />
+    <Content Include="music\pismo.mp3" />
     <Content Include="MyModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>MyModel.edmx</DependentUpon>

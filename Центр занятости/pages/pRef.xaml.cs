@@ -155,7 +155,9 @@ namespace Центр_занятости.pages
         {
             var btn = sender as Button;
             var item = btn.DataContext as ReferralToWork;
-            string path = @"reference.dot";
+            string s = Environment.CurrentDirectory;
+            s = s.Remove(s.Length - 10, 10);
+            string path = $@"{s}//docs//reference.dot";
             Word.Application app = new Word.Application();
             Word.Document doc = null;
             try

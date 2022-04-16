@@ -44,7 +44,7 @@ namespace Центр_занятости.windows
             {
                 if (organization.Image == null)
                 {
-                    string path = $@"{Environment.CurrentDirectory}/image/no-photo.jpg";
+                    string path = $@"{Environment.CurrentDirectory.Remove(Environment.CurrentDirectory.Length - 10, 10)}/images/no-photo.jpg";
                     FileInfo fileInfo = new FileInfo(path);
                     if (fileInfo.Exists)
                     {
@@ -54,7 +54,7 @@ namespace Центр_занятости.windows
                 else
                 {
                     string file = organization.Image;
-                    string path = $@"{Environment.CurrentDirectory}{file}";
+                    string path = $@"{Environment.CurrentDirectory.Remove(Environment.CurrentDirectory.Length - 10, 10)}{file}";
                     FileInfo fileInfo = new FileInfo(path);
                     if (fileInfo.Exists)
                     {
@@ -299,8 +299,10 @@ namespace Центр_занятости.windows
         MediaPlayer mp = new MediaPlayer();
         private void cmbProf_DropDownOpened(object sender, EventArgs e)
         {
-            mp.Open(new Uri("elevator.mp3", UriKind.Relative));
-            mp.Volume = 0.1;
+            string s = Environment.CurrentDirectory;
+            s = s.Remove(s.Length - 10, 10);
+            mp.Open(new Uri($@"{s}//music//elevator.mp3"));
+            mp.Volume = 0.15;
             mp.Play();
         }
 

@@ -142,7 +142,9 @@ namespace Центр_занятости.pages
         {
             var btn = sender as Button;
             var item = btn.DataContext as ApplicationOfUnemployed;
-            string path = @"application.dot";
+            string s = Environment.CurrentDirectory;
+            s = s.Remove(s.Length - 10, 10);
+            string path = $@"{s}//docs//application.dot";
             Word.Application app = new Word.Application();
             Word.Document doc = null;
             try

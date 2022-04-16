@@ -104,7 +104,9 @@ namespace Центр_занятости.windows
                         wAuth.center.Stipend.Add(stipend);
                     }
                     wAuth.center.SaveChanges();
-                    mp.Open(new Uri("money.mp3", UriKind.Relative));
+                    string s = Environment.CurrentDirectory;
+                    s = s.Remove(s.Length - 10, 10);
+                    mp.Open(new Uri($@"{s}//music//money.mp3"));
                     mp.Volume = 0.1;
                     mp.Play();
                     MessageBox.Show("Данные сохранены",

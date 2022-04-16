@@ -119,7 +119,10 @@ namespace Центр_занятости.windows
                         application.TimeComment = DateTime.Now;
                     }
                     wAuth.center.SaveChanges();
-                    mp.Open(new Uri("pismo.mp3", UriKind.Relative));
+                    string s = Environment.CurrentDirectory;
+                    s = s.Remove(s.Length - 10, 10);
+                    mp.Open(new Uri($@"{s}//music//pismo.mp3"));
+                    mp.Volume = 0.15;
                     mp.Play();
                     MessageBox.Show("Данные сохранены", "Внимание",
                         MessageBoxButton.OK);

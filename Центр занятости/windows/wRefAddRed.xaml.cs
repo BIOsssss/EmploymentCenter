@@ -73,8 +73,10 @@ namespace Центр_занятости.windows
                         wAuth.center.ReferralToWork.Add(referral);
                     }
                     wAuth.center.SaveChanges();
-                    mp.Open(new Uri("pechat.mp3", UriKind.Relative));
-                    mp.Volume = 0.2;
+                    string s = Environment.CurrentDirectory;
+                    s = s.Remove(s.Length - 10, 10);
+                    mp.Open(new Uri($@"{s}//music//pechat.mp3"));
+                    mp.Volume = 0.15;
                     mp.Play();
                     MessageBox.Show("Данные сохранены",
                         "Внимание", MessageBoxButton.OK);
