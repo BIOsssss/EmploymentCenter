@@ -163,7 +163,11 @@ namespace Центр_занятости.windows
                     && p.Workers.ID_Center == center.ID
                     && p.Applicants.Genders.Name == "Женский").ToList();
 
-                int sum = 0;
+                int sum = 0,
+                    avg = 0;
+                float male = 0,
+                    female = 0;
+                    ;
                 foreach (var item in wAuth.center.ApplicationOfUnemployed
                     .Where(p => p.Workers.ID_Center == center.ID
                     && dtStart.SelectedDate <= p.DateApplicant
@@ -172,19 +176,29 @@ namespace Центр_занятости.windows
                     TimeSpan ts = DateTime.Today - item.Applicants.Birthday;
                     sum += ts.Days / 365;
                 }
-                int avg = sum / wAuth.center.ApplicationOfUnemployed
+                if(wAuth.center.ApplicationOfUnemployed
                     .Where(p => p.Workers.ID_Center == center.ID
                     && dtStart.SelectedDate <= p.DateApplicant
-                    && p.DateApplicant <= dtFinish.SelectedDate).Count();
+                    && p.DateApplicant <= dtFinish.SelectedDate).Count() == 0)
+                {
 
-                float male = (float)man.Count * 100 / wAuth.center.ApplicationOfUnemployed
-                    .Where(p => p.Workers.ID_Center == center.ID
-                    && dtStart.SelectedDate <= p.DateApplicant
-                    && p.DateApplicant <= dtFinish.SelectedDate).Count();
-                float female = (float)fem.Count * 100 / wAuth.center.ApplicationOfUnemployed
-                    .Where(p => p.Workers.ID_Center == center.ID
-                    && dtStart.SelectedDate <= p.DateApplicant
-                    && p.DateApplicant <= dtFinish.SelectedDate).Count();
+                }
+                else
+                {
+                    avg = sum / wAuth.center.ApplicationOfUnemployed
+    .Where(p => p.Workers.ID_Center == center.ID
+    && dtStart.SelectedDate <= p.DateApplicant
+    && p.DateApplicant <= dtFinish.SelectedDate).Count();
+
+                    male = (float)man.Count * 100 / wAuth.center.ApplicationOfUnemployed
+                        .Where(p => p.Workers.ID_Center == center.ID
+                        && dtStart.SelectedDate <= p.DateApplicant
+                        && p.DateApplicant <= dtFinish.SelectedDate).Count();
+                    female = (float)fem.Count * 100 / wAuth.center.ApplicationOfUnemployed
+                        .Where(p => p.Workers.ID_Center == center.ID
+                        && dtStart.SelectedDate <= p.DateApplicant
+                        && p.DateApplicant <= dtFinish.SelectedDate).Count();
+                }
 
                 worksheet3.Cells[1, 1] = $"Период отчета: с {dtStart.SelectedDate.Value.ToLongDateString()} " +
                     $"по {dtFinish.SelectedDate.Value.ToLongDateString()}";
@@ -195,7 +209,7 @@ namespace Центр_занятости.windows
 
                 //диаграмма
                 Excel.ChartObjects chartObjects = (Excel.ChartObjects)worksheet3.ChartObjects();
-                Excel.ChartObject chartObject = chartObjects.Add(500, 5, 300, 300);
+                Excel.ChartObject chartObject = chartObjects.Add(5, 100, 250, 300);
                 Excel.Chart chart = chartObject.Chart;
 
                 var sr = wAuth.center.ApplicationOfUnemployed
@@ -235,6 +249,89 @@ namespace Центр_занятости.windows
                 chart.ChartTitle.Text = "Уровень образования соискателей";
                 chart.HasLegend = true;
 
+                Dictionary<string, int> topVac = new Dictionary<string, int>();
+                foreach (var item in wAuth.center.Professions.ToList())
+                {
+                    int count = 0;
+                    foreach (var it in wAuth.center.Vacancy.ToList())
+                    {
+                        if (it.Specialization == item.ID
+                            && dtStart.SelectedDate <= it.Date
+                        && it.Date <= dtFinish.SelectedDate) count++;
+                    }
+                    topVac.Add(item.Name, count);
+                }
+
+                int n = 40;
+
+                foreach (var item in topVac.OrderByDescending(p => p.Value))
+                {
+                    if (n > 44)
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        worksheet3.Cells[n, 3] = item.Key;
+                        worksheet3.Cells[n, 4] = item.Value;
+                        n++;
+                    }
+                }
+
+                worksheet3.Cells[39, 4] = "Кол-во ваканский";
+
+                Excel.ChartObjects chart1Objects = (Excel.ChartObjects)worksheet3.ChartObjects();
+                Excel.ChartObject chart1Object = chart1Objects.Add(255, 100, 250, 300);
+                Excel.Chart chart1 = chart1Object.Chart;
+
+                Excel.Range rngV = worksheet3.Range[worksheet3.Cells[39, 3], worksheet3.Cells[44, 4]];
+                chart1.SetSourceData(rngV);
+                chart1.ChartType = Excel.XlChartType.xlColumnClustered;
+                chart1.HasTitle = true;
+                chart1.ChartTitle.Text = "ТОП 5 профессий по вакансиям";
+                chart1.HasLegend = true;
+
+                Dictionary<string, int> topApp = new Dictionary<string, int>();
+                foreach (var item in wAuth.center.Professions.ToList())
+                {
+                    int count = 0;
+                    foreach (var it in wAuth.center.ApplicationOfUnemployed.ToList())
+                    {
+                        if (it.Applicants.Profession == item.ID
+                            && dtStart.SelectedDate <= it.DateApplicant
+                        && it.DateApplicant <= dtFinish.SelectedDate) count++;
+                    }
+                    topApp.Add(item.Name, count);
+                }
+
+                n = 40;
+
+                foreach (var item in topApp.OrderByDescending(p => p.Value))
+                {
+                    if (n > 44)
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        worksheet3.Cells[n, 6] = item.Key;
+                        worksheet3.Cells[n, 7] = item.Value;
+                        n++;
+                    }
+                }
+
+                worksheet3.Cells[39, 7] = "Кол-во соискателей";
+
+                Excel.ChartObjects chart2Objects = (Excel.ChartObjects)worksheet3.ChartObjects();
+                Excel.ChartObject chart2Object = chart2Objects.Add(500, 100, 250, 300);
+                Excel.Chart chart2 = chart2Object.Chart;
+
+                Excel.Range rngA = worksheet3.Range[worksheet3.Cells[39, 6], worksheet3.Cells[44, 7]];
+                chart2.SetSourceData(rngA);
+                chart2.ChartType = Excel.XlChartType.xl3DBarStacked;
+                chart2.HasTitle = true;
+                chart2.ChartTitle.Text = "ТОП 5 профессий среди соискателей";
+                chart2.HasLegend = true;
 
                 //включаемся
                 excelApp.WindowState = Excel.XlWindowState.xlMaximized;
@@ -248,6 +345,15 @@ namespace Центр_занятости.windows
         {
             dtStart.SelectedDate = new DateTime(DateTime.Now.Year,1,1);
             dtFinish.SelectedDate = DateTime.Now;
+
+            if (cmbCenter.SelectedIndex == -1)
+            {
+                btnOK.IsEnabled = false;
+            }
+            else
+            {
+                btnOK.IsEnabled = true;
+            }
         }
 
         private void btnAll_Click(object sender, RoutedEventArgs e)
@@ -444,7 +550,7 @@ namespace Центр_занятости.windows
 
                 //диаграмма
                 Excel.ChartObjects chartObjects = (Excel.ChartObjects)worksheet3.ChartObjects();
-                Excel.ChartObject chartObject = chartObjects.Add(500, 5, 300, 300);
+                Excel.ChartObject chartObject = chartObjects.Add(5, 100, 250, 300);
                 Excel.Chart chart = chartObject.Chart;
 
                 var sr = wAuth.center.ApplicationOfUnemployed
@@ -480,11 +586,106 @@ namespace Центр_занятости.windows
                 chart.ChartTitle.Text = "Уровень образования соискателей";
                 chart.HasLegend = true;
 
+                Dictionary<string, int> topVac = new Dictionary<string, int>();
+                foreach(var item in wAuth.center.Professions.ToList())
+                {
+                    int count = 0;
+                    foreach(var it in wAuth.center.Vacancy.ToList())
+                    {
+                        if (it.Specialization == item.ID
+                            && dtStart.SelectedDate <= it.Date
+                        && it.Date <= dtFinish.SelectedDate) count++;
+                    }
+                    topVac.Add(item.Name, count);
+                }
+
+                int n = 40;
+
+                foreach (var item in topVac.OrderByDescending(p => p.Value))
+                {
+                    if(n > 44)
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        worksheet3.Cells[n, 3] = item.Key;
+                        worksheet3.Cells[n, 4] = item.Value;
+                        n++;
+                    }
+                }
+
+                worksheet3.Cells[39, 4] = "Кол-во ваканский";
+
+                Excel.ChartObjects chart1Objects = (Excel.ChartObjects)worksheet3.ChartObjects();
+                Excel.ChartObject chart1Object = chart1Objects.Add(255, 100, 250, 300);
+                Excel.Chart chart1 = chart1Object.Chart;
+
+                Excel.Range rngV = worksheet3.Range[worksheet3.Cells[39, 3], worksheet3.Cells[44, 4]];
+                chart1.SetSourceData(rngV);
+                chart1.ChartType = Excel.XlChartType.xlColumnClustered;
+                chart1.HasTitle = true;
+                chart1.ChartTitle.Text = "ТОП 5 профессий по вакансиям";
+                chart1.HasLegend = true;
+
+                Dictionary<string, int> topApp = new Dictionary<string, int>();
+                foreach (var item in wAuth.center.Professions.ToList())
+                {
+                    int count = 0;
+                    foreach (var it in wAuth.center.ApplicationOfUnemployed.ToList())
+                    {
+                        if (it.Applicants.Profession == item.ID
+                            && dtStart.SelectedDate <= it.DateApplicant
+                        && it.DateApplicant <= dtFinish.SelectedDate) count++;
+                    }
+                    topApp.Add(item.Name, count);
+                }
+
+                n = 40;
+
+                foreach (var item in topApp.OrderByDescending(p => p.Value))
+                {
+                    if (n > 44)
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        worksheet3.Cells[n, 6] = item.Key;
+                        worksheet3.Cells[n, 7] = item.Value;
+                        n++;
+                    }
+                }
+
+                worksheet3.Cells[39, 7] = "Кол-во соискателей";
+
+                Excel.ChartObjects chart2Objects = (Excel.ChartObjects)worksheet3.ChartObjects();
+                Excel.ChartObject chart2Object = chart2Objects.Add(500, 100, 250, 300);
+                Excel.Chart chart2 = chart2Object.Chart;
+
+                Excel.Range rngA = worksheet3.Range[worksheet3.Cells[39, 6], worksheet3.Cells[44, 7]];
+                chart2.SetSourceData(rngA);
+                chart2.ChartType = Excel.XlChartType.xl3DBarStacked;
+                chart2.HasTitle = true;
+                chart2.ChartTitle.Text = "ТОП 5 профессий среди соискателей";
+                chart2.HasLegend = true;
 
                 //включаемся
                 excelApp.WindowState = Excel.XlWindowState.xlMaximized;
                 excelApp.Visible = true;
                 excelApp.UserControl = true;
+            }
+        }
+
+        private void cmbCenter_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (cmbCenter.SelectedIndex == -1)
+            {
+                btnOK.IsEnabled = false;
+            }
+            else
+            {
+                btnOK.IsEnabled = true;
             }
         }
     }

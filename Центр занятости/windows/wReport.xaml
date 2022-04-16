@@ -63,7 +63,7 @@
                   MaxDropDownHeight="100"
                   Grid.Column="1"
                   Grid.Row="2"
-                  />
+                  SelectionChanged="cmbCenter_SelectionChanged"/>
         <Button Style="{StaticResource btnNorm}"
                 Name="btnOK"
                 Grid.Row="3"
