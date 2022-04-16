@@ -85,7 +85,16 @@ namespace Центр_занятости.windows
                 else
                 {
                     string file = org.Image;
-                    string path = $@"{Environment.CurrentDirectory.Remove(Environment.CurrentDirectory.Length - 10, 10)}{file}";
+                    string s = Environment.CurrentDirectory;
+                    if (s.Contains("Debug"))
+                    {
+                        s = s.Remove(s.Length - 10, 10);
+                    }
+                    if (s.Contains("EmploymentCenter"))
+                    {
+
+                    }
+                    string path = $@"{s}{file}";
                     FileInfo fileInfo = new FileInfo(path);
                     if (fileInfo.Exists)
                     {
@@ -350,7 +359,16 @@ namespace Центр_занятости.windows
                 string[] f = file.Split('\\');
                 string fl = f[f.Length - 1];
                 string fImg = $@"\image\{fl}";
-                string path = $@"{Environment.CurrentDirectory}{fImg}";
+                string s = Environment.CurrentDirectory;
+                if (s.Contains("Debug"))
+                {
+                    s = s.Remove(s.Length - 10, 10);
+                }
+                if (s.Contains("EmploymentCenter"))
+                {
+
+                }
+                string path = $@"{s}{fImg}";
                 FileInfo fileInfo = new FileInfo(file);
                 if (fileInfo.Exists)
                 {
@@ -386,7 +404,16 @@ namespace Центр_занятости.windows
                 string[] f = file.Split('\\');
                 string fl = f[f.Length - 1];
                 string fImg = $@"\images\{fl}";
-                string path = $@"{Environment.CurrentDirectory.Remove(Environment.CurrentDirectory.Length - 10, 10)}{fImg}";
+                string s = Environment.CurrentDirectory;
+                if (s.Contains("Debug"))
+                {
+                    s = s.Remove(s.Length - 10, 10);
+                }
+                if (s.Contains("EmploymentCenter"))
+                {
+
+                }
+                string path = $@"{s}{fImg}";
                 FileInfo fileInfo = new FileInfo(file);
                 if (fileInfo.Exists)
                 {

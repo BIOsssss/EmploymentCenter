@@ -120,8 +120,15 @@ namespace Центр_занятости.windows
                     }
                     wAuth.center.SaveChanges();
                     string s = Environment.CurrentDirectory;
-                    s = s.Remove(s.Length - 10, 10);
-                    mp.Open(new Uri($@"{s}//music//pismo.mp3"));
+                    if (s.Contains("Debug"))
+                    {
+                        s = s.Remove(s.Length - 10, 10);
+                    }
+                    if (s.Contains("EmploymentCenter"))
+                    {
+
+                    }
+                    mp.Open(new Uri($@"{s}" + @"\" + "music" + @"\" + "pismo.mp3"));
                     mp.Volume = 0.15;
                     mp.Play();
                     MessageBox.Show("Данные сохранены", "Внимание",

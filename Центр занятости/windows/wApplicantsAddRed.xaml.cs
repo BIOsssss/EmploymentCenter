@@ -657,8 +657,15 @@ namespace Центр_занятости.windows
         private void cmbProf_DropDownOpened(object sender, EventArgs e)
         {
             string s = Environment.CurrentDirectory;
-            s = s.Remove(s.Length - 10, 10);
-            mp.Open(new Uri($@"{s}//music//elevator.mp3"));
+            if (s.Contains("Debug"))
+            {
+                s = s.Remove(s.Length - 10, 10);
+            }
+            if (s.Contains("EmploymentCenter"))
+            {
+
+            }
+            mp.Open(new Uri($@"{s}" + @"\" + "music" + @"\" + "elevator.mp3"));
             mp.Volume = 0.15;
             mp.Play();
         }

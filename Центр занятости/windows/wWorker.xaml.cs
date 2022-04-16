@@ -126,8 +126,15 @@ namespace Центр_занятости.windows
             Process info = new Process();
             info.StartInfo.ErrorDialog = true;
             string s = Environment.CurrentDirectory;
-            s = s.Remove(s.Length - 10, 10);
-            info.StartInfo.FileName = $@"{s}//center.chm";
+            if (s.Contains("Debug"))
+            {
+                s = s.Remove(s.Length - 10, 10);
+            }
+            if (s.Contains("EmploymentCenter"))
+            {
+
+            }
+            info.StartInfo.FileName = $"{s}" + @"\" + "center.chm";
             info.Start();
         }
 
@@ -178,8 +185,15 @@ namespace Центр_занятости.windows
                 Process info = new Process();
                 info.StartInfo.ErrorDialog = true;
                 string s = Environment.CurrentDirectory;
-                s = s.Remove(s.Length - 10, 10);
-                info.StartInfo.FileName = $@"{s}//center.chm";
+                if (s.Contains("Debug"))
+                {
+                    s = s.Remove(s.Length - 10, 10);
+                }
+                if (s.Contains("EmploymentCenter"))
+                {
+
+                }
+                info.StartInfo.FileName = $"{s}" + @"\" + "center.chm";
                 info.Start();
             }
         }
