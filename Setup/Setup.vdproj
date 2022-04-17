@@ -135,12 +135,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_9B182718DA63439B9018099183D06657"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_9C76AC17C62B477E8FC1FC85D1C3185F"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -148,6 +142,12 @@
         "Entry"
         {
         "MsmKey" = "8:_9FC03210A64A499A9054A53974D7A92B"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_A8BEF3A387514B56BD950BC9522B0381"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -244,12 +244,6 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_73A255A3F659BD2ED41DACC20E23CF17"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_F345C846F8794F90835BD4EA5B567753"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -275,6 +269,12 @@
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_4D89E4F8BB5FB392CC48166B2F0E917F"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_73A255A3F659BD2ED41DACC20E23CF17"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -332,6 +332,14 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+            }
         }
     }
     "Deployable"
@@ -754,26 +762,6 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_9B182718DA63439B9018099183D06657"
-            {
-            "SourcePath" = "8:..\\Центр занятости\\docs\\application.dot"
-            "TargetName" = "8:application.dot"
-            "Tag" = "8:"
-            "Folder" = "8:_29768DFF2F1C4DBF9B94BE3693EC874C"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_9C76AC17C62B477E8FC1FC85D1C3185F"
             {
             "SourcePath" = "8:..\\Центр занятости\\center.chm"
@@ -798,6 +786,26 @@
             {
             "SourcePath" = "8:..\\Центр занятости\\docs\\reference.dot"
             "TargetName" = "8:reference.dot"
+            "Tag" = "8:"
+            "Folder" = "8:_29768DFF2F1C4DBF9B94BE3693EC874C"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_A8BEF3A387514B56BD950BC9522B0381"
+            {
+            "SourcePath" = "8:..\\Центр занятости\\docs\\application.dot"
+            "TargetName" = "8:application.dot"
             "Tag" = "8:"
             "Folder" = "8:_29768DFF2F1C4DBF9B94BE3693EC874C"
             "Condition" = "8:"
@@ -1133,7 +1141,7 @@
                 {
                     "{9EF0B969-E518-4E46-987F-47570745A589}:_FD624EA2CDDF4D82939275CF38F11B92"
                     {
-                    "Name" = "8:App"
+                    "Name" = "8:Центр занятости"
                     "AlwaysCreate" = "11:FALSE"
                     "Condition" = "8:"
                     "Transitive" = "11:FALSE"
@@ -1848,6 +1856,34 @@
                 {
                 }
             }
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_EF3926039FEF4B9C97E43E336BE0016D"
+            {
+            "SourcePath" = "8:"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_C471B467DE6B4C06A3942320624C116A"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            "ProjectOutputGroupRegister" = "3:1"
+            "OutputConfiguration" = "8:"
+            "OutputGroupCanonicalName" = "8:RuntimeImplementation"
+            "OutputProjectGuid" = "8:{67A7EDA4-D7D3-4C0B-A583-5F8960C21B39}"
+            "ShowKeyOutput" = "11:TRUE"
+                "ExcludeFilters"
+                {
+                }
+            }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_F345C846F8794F90835BD4EA5B567753"
             {
             "SourcePath" = "8:..\\Центр занятости\\obj\\Debug\\Центр занятости.exe"
@@ -1870,6 +1906,34 @@
             "ProjectOutputGroupRegister" = "3:1"
             "OutputConfiguration" = "8:"
             "OutputGroupCanonicalName" = "8:Built"
+            "OutputProjectGuid" = "8:{67A7EDA4-D7D3-4C0B-A583-5F8960C21B39}"
+            "ShowKeyOutput" = "11:TRUE"
+                "ExcludeFilters"
+                {
+                }
+            }
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_F5ED2AA3EBB9490D949E4EED4DF19B67"
+            {
+            "SourcePath" = "8:"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_C471B467DE6B4C06A3942320624C116A"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            "ProjectOutputGroupRegister" = "3:1"
+            "OutputConfiguration" = "8:"
+            "OutputGroupCanonicalName" = "8:Symbols"
             "OutputProjectGuid" = "8:{67A7EDA4-D7D3-4C0B-A583-5F8960C21B39}"
             "ShowKeyOutput" = "11:TRUE"
                 "ExcludeFilters"

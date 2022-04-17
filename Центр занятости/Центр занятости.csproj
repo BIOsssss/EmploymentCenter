@@ -107,51 +107,65 @@
     </ApplicationDefinition>
     <Compile Include="Applicants.cs">
       <DependentUpon>MyModel.tt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="ApplicationOfUnemployed.cs">
       <DependentUpon>MyModel.tt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Centers.cs">
       <DependentUpon>MyModel.tt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Countries.cs">
       <DependentUpon>MyModel.tt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Educations.cs">
       <DependentUpon>MyModel.tt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="ExpWorkType.cs">
       <DependentUpon>MyModel.tt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="ExpWorkUnemployed.cs">
       <DependentUpon>MyModel.tt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Genders.cs">
       <DependentUpon>MyModel.tt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Localities.cs">
       <DependentUpon>MyModel.tt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="ManagerOrg.cs">
       <DependentUpon>MyModel.tt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="MyModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>MyModel.Context.tt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="MyModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>MyModel.tt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="MyModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>MyModel.edmx</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Organization.cs">
       <DependentUpon>MyModel.tt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="pages\pDocs.xaml.cs">
       <DependentUpon>pDocs.xaml</DependentUpon>
@@ -176,48 +190,63 @@
     </Compile>
     <Compile Include="Passport.cs">
       <DependentUpon>MyModel.tt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="PaymentAccount.cs">
       <DependentUpon>MyModel.tt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Professions.cs">
       <DependentUpon>MyModel.tt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="ReferralToWork.cs">
       <DependentUpon>MyModel.tt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Regions.cs">
       <DependentUpon>MyModel.tt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="RegistrationAddress.cs">
       <DependentUpon>MyModel.tt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="RegistrationOfResidence.cs">
       <DependentUpon>MyModel.tt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Roles.cs">
       <DependentUpon>MyModel.tt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="StatusUnemployed.cs">
       <DependentUpon>MyModel.tt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Stipend.cs">
       <DependentUpon>MyModel.tt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="sysdiagrams.cs">
       <DependentUpon>MyModel.tt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="TypeOfEmployment.cs">
       <DependentUpon>MyModel.tt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="TypeOrganization.cs">
       <DependentUpon>MyModel.tt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Users.cs">
       <DependentUpon>MyModel.tt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Vacancy.cs">
       <DependentUpon>MyModel.tt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="windows\wAccAddRed.xaml.cs">
       <DependentUpon>wAccAddRed.xaml</DependentUpon>
@@ -275,9 +304,11 @@
     </Compile>
     <Compile Include="Workers.cs">
       <DependentUpon>MyModel.tt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="WorkSchedule.cs">
       <DependentUpon>MyModel.tt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Page Include="pages\pDocs.xaml">
       <SubType>Designer</SubType>
@@ -427,12 +458,14 @@
     <EntityDeploy Include="MyModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>MyModel.Designer.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EntityDeploy>
     <None Include="docs\application.dot" />
     <None Include="docs\reference.dot" />
     <None Include="docs\stipend.dot" />
     <None Include="MyModel.edmx.diagram">
       <DependentUpon>MyModel.edmx</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -542,11 +575,13 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>MyModel.edmx</DependentUpon>
       <LastGenOutput>MyModel.Context.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="MyModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>MyModel.edmx</DependentUpon>
       <LastGenOutput>MyModel.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <ItemGroup>
