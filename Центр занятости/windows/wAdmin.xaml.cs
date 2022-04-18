@@ -18,7 +18,7 @@ using System.Diagnostics;
 namespace Центр_занятости.windows
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для wAdmin.xaml
     /// </summary>
     public partial class wAdmin : Window
     {

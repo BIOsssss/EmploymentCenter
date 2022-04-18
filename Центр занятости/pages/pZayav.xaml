@@ -76,6 +76,14 @@
                     Click="btnLast_Click"/>
         </StackPanel>
 
+        <Button x:Name="btnNotTrud"
+                Content="Нетрудоустроенные"
+                Style="{StaticResource btnNorm}"
+                Grid.Row="2"
+                Width="210"
+                Margin="0 0 50 0"
+                Click="btnNotTrud_Click"/>
+
         <Button x:Name="btnDel"
                 Content="Удалить"
                 Margin="375 0 0 0"

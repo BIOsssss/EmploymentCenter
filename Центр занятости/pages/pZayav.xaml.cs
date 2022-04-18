@@ -39,6 +39,7 @@ namespace Центр_занятости.pages
                 btnAdd.Visibility = Visibility.Hidden;
                 btnDel.Visibility = Visibility.Hidden;
                 btnRed.Visibility = Visibility.Hidden;
+                btnNotTrud.Visibility = Visibility.Hidden;
             }
             if(user.Roles.Name == "Инспектор")
             {
@@ -263,6 +264,26 @@ namespace Центр_занятости.pages
             var app = btn.DataContext as ApplicationOfUnemployed;
             windows.wApplicationAddRed info = new windows.wApplicationAddRed(app, user);
             info.ShowDialog();
+        }
+
+        public bool click = false;
+
+        private void btnNotTrud_Click(object sender, RoutedEventArgs e)
+        {
+            if (click)
+            {
+                Update();
+                Refresh();
+                click = false;
+            }
+            else
+            {
+                click = true;
+                List<ApplicationOfUnemployed> applications = grZayav.ItemsSource as List<ApplicationOfUnemployed>;
+                var res = applications.Where(p => p.StatusUnemployed.Name != "Трудоустроен").ToList();
+                applications = res;
+                grZayav.ItemsSource = applications;
+            }
         }
     }
 }
