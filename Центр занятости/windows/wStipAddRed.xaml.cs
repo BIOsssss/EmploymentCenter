@@ -56,6 +56,15 @@ namespace Центр_занятости.windows
                 {
                     error += "Выберите соискателя\n";
                 }
+                else
+                {
+                    var app = cmbApp.SelectedItem as Applicants;
+                    if(app.PaymentAccount == null || app.PaymentAcc == null
+                        || app.PaymentAcc == 0)
+                    {
+                        error += "У соискателя нет информации о рассчетном счете\n";
+                    }
+                }
                 if(cmbWork.SelectedIndex == -1)
                 {
                     error += "Выберите инспектора\n";

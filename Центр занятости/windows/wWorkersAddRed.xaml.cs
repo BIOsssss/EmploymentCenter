@@ -111,11 +111,33 @@ namespace Центр_занятости.windows
                     if (MessageBox.Show("Вы точно хотите удалить данные?", "Внимание",
     MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
                     {
-                        wAuth.center.Workers.Remove(worker);
-                        wAuth.center.SaveChanges();
-                        MessageBox.Show("Успешно удалено", "Внимание",
-                            MessageBoxButton.OK, MessageBoxImage.Information);
-                        Close();
+                        string error = "Невозможно удаление информации об инспекоре, поскольку есть связанная с ним информация:\n";
+                        if(worker.ApplicationOfUnemployed.Count > 0)
+                        {
+                            error += "Заявление по безработице\n";
+                        }
+                        if(worker.ReferralToWork.Count > 0)
+                        {
+                            error += "Направление на работу\n";
+                        }
+                        if(worker.Stipend.Count > 0)
+                        {
+                            error += "Назначенные пособии\n";
+                        }
+                        if(error != "")
+                        {
+                            MessageBox.Show(error, "Внимание",
+                                MessageBoxButton.OK, MessageBoxImage.Error);
+                            return;
+                        }
+                        else
+                        {
+                            wAuth.center.Workers.Remove(worker);
+                            wAuth.center.SaveChanges();
+                            MessageBox.Show("Успешно удалено", "Внимание",
+                                MessageBoxButton.OK, MessageBoxImage.Information);
+                            Close();
+                        }
                     }
                 }
                 catch(Exception ex)

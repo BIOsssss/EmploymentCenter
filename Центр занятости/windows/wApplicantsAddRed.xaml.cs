@@ -224,11 +224,57 @@ namespace Центр_занятости.windows
                     if (MessageBox.Show("Вы точно хотите удалить данные?", "Внимание",
     MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
                     {
-                        wAuth.center.Applicants.Remove(applicant);
-                        wAuth.center.SaveChanges();
-                        MessageBox.Show("Успешно удалено", "Внимание",
-                            MessageBoxButton.OK, MessageBoxImage.Information);
-                        Close();
+                        var adrress = wAuth.center.RegistrationAddress.Where(p => p.ID == applicant.Address).ToList();
+                        var pass = wAuth.center.Passport.Where(p => p.ID == applicant.Passport).ToList();
+                        var opyt = wAuth.center.ExpWorkUnemployed.Where(p => p.ID_Applicant == applicant.ID).ToList();
+                        var payment = wAuth.center.PaymentAccount.Where(p => p.ID == applicant.PaymentAcc).ToList();
+                        var zayv = wAuth.center.ApplicationOfUnemployed.Where(p => p.ID_Applicant == applicant.ID).ToList();
+                        var work = wAuth.center.ReferralToWork.Where(p => p.ID_Applicant == applicant.ID).ToList();
+                        var stip = wAuth.center.Stipend.Where(p => p.ID_Applicants == applicant.ID).ToList();
+
+                        string error = "Невозможно удалить информацию о соискателе, поскольку есть связанная с ним информация:\n";
+                        if(adrress.Count > 0)
+                        {
+                            error += "Адрес проживания\n";
+                        }
+                        if (pass.Count > 0)
+                        {
+                            error += "Паспортные данные\n";
+                        }
+                        if (opyt.Count > 0)
+                        {
+                            error += "Опыт работы\n";
+                        }
+                        if (payment.Count > 0)
+                        {
+                            error += "Рассчетный счет\n";
+                        }
+                        if (zayv.Count > 0)
+                        {
+                            error += "Заявление по безработице\n";
+                        }
+                        if (work.Count > 0)
+                        {
+                            error += "Направление на работу\n";
+                        }
+                        if (stip.Count > 0)
+                        {
+                            error += "Назначенные пособии\n";
+                        }
+                        if(error != "")
+                        {
+                            MessageBox.Show(error, "Внимание",
+                                MessageBoxButton.OK, MessageBoxImage.Error);
+                            return;
+                        }
+                        else
+                        {
+                            wAuth.center.Applicants.Remove(applicant);
+                            wAuth.center.SaveChanges();
+                            MessageBox.Show("Успешно удалено", "Внимание",
+                                MessageBoxButton.OK, MessageBoxImage.Information);
+                            Close();
+                        }
                     }
                 }
                 catch(Exception ex)

@@ -158,11 +158,30 @@ namespace Центр_занятости.windows
                     if (MessageBox.Show("Вы точно хотите удалить данные?", "Внимание",
     MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
                     {
-                        wAuth.center.Organization.Remove(org);
-                        wAuth.center.SaveChanges();
-                        MessageBox.Show("Успешно удалено", "Внимание",
-                            MessageBoxButton.OK, MessageBoxImage.Information);
-                        Close();
+                        var work = wAuth.center.ReferralToWork.Where(p => p.ID_Org == org.ID).ToList();
+                        var vac = wAuth.center.Vacancy.Where(p => p.ID_Org == org.ID).ToList();
+                        string error = "Невозможно удаление информации об организации, поскольку есть связанная с ней информация:\n";
+                        if(work.Count > 0)
+                        {
+                            error += "Направление на работу\n";
+                        }
+                        if(vac.Count > 0)
+                        {
+                            error += "Вакансии\n";
+                        }
+                        if(error != "")
+                        {
+                            MessageBox.Show(error, "Внимание",
+                                MessageBoxButton.OK, MessageBoxImage.Error);
+                        }
+                        else
+                        {
+                            wAuth.center.Organization.Remove(org);
+                            wAuth.center.SaveChanges();
+                            MessageBox.Show("Успешно удалено", "Внимание",
+                                MessageBoxButton.OK, MessageBoxImage.Information);
+                            Close();
+                        }
                     }
                 }
                 catch(Exception ex)

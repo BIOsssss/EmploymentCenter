@@ -20,6 +20,7 @@ namespace Центр_занятости.pages
     /// </summary>
     public partial class pVacancies : Page
     {
+
         public Users user;
 
         public int currentPage = 1;
@@ -32,6 +33,9 @@ namespace Центр_занятости.pages
             this.user = user;
             Update();
             Refresh();
+            
+            //Проверка роли пользователя
+
             if (user.Roles.Name == "Соискатель" ||
                 user.Roles.Name == "Менеджер организации")
             {
@@ -45,7 +49,9 @@ namespace Центр_занятости.pages
                 btnDel.Visibility = Visibility.Hidden;
             }
         }
-
+        /// <summary>
+        /// Обновление тааблицы "Вакансии"
+        /// </summary>
         private void Update()
         {
             grVacancy.ItemsSource = windows.wAuth.center.Vacancy
@@ -53,7 +59,11 @@ namespace Центр_занятости.pages
                 .OrderByDescending(p => p.Date)
                 .ToList();
         }
-
+        /// <summary>
+        /// Просмотр вакансии
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnInfo_Click(object sender, RoutedEventArgs e)
         {
             var btn = sender as Button;
@@ -61,7 +71,11 @@ namespace Центр_занятости.pages
             windows.wVacancyAddRed red = new windows.wVacancyAddRed(vacancy, user);
             red.ShowDialog();
         }
-
+        /// <summary>
+        /// Редактирование вакансии
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnRed_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -86,7 +100,11 @@ namespace Центр_занятости.pages
                     MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
-
+        /// <summary>
+        /// Добавление вакансии
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
             Vacancy vacancy = new Vacancy();
@@ -95,7 +113,11 @@ namespace Центр_занятости.pages
             Update();
             Refresh();
         }
-
+        /// <summary>
+        /// Удаление вакансии
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnDel_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -106,12 +128,23 @@ namespace Центр_занятости.pages
                     if (MessageBox.Show("Вы точно хотите удалить данные?", "Внимание",
                         MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
                     {
-                        windows.wAuth.center.Vacancy.Remove(item);
-                        windows.wAuth.center.SaveChanges();
-                        Update();
-                        Refresh();
-                        MessageBox.Show("Успешно удалено", "Внимание",
-                            MessageBoxButton.OK, MessageBoxImage.Information);
+                        var res = windows.wAuth.center.ReferralToWork.Where(p => p.ID_Vacancy == item.ID).ToList();
+                        if(res.Count > 0)
+                        {
+                            MessageBox.Show("Удаление невозможно, поскольку с данной вакансией есть связанные направления на работу",
+                                "Внимание",
+                                MessageBoxButton.OK, MessageBoxImage.Error);
+                            return;
+                        }
+                        else
+                        {
+                            windows.wAuth.center.Vacancy.Remove(item);
+                            windows.wAuth.center.SaveChanges();
+                            Update();
+                            Refresh();
+                            MessageBox.Show("Успешно удалено", "Внимание",
+                                MessageBoxButton.OK, MessageBoxImage.Information);
+                        }
                     }
                 }
                 else

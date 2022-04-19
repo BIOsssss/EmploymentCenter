@@ -163,11 +163,21 @@ namespace Центр_занятости.windows
                     if (MessageBox.Show("Вы точно хотите удалить данные?", "Внимание",
     MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
                     {
-                        wAuth.center.ManagerOrg.Remove(manager);
-                        wAuth.center.SaveChanges();
-                        MessageBox.Show("Успешно удалено", "Внимание",
-                            MessageBoxButton.OK, MessageBoxImage.Information);
-                        Close();
+                        if(manager.Organization == null)
+                        {
+                            wAuth.center.ManagerOrg.Remove(manager);
+                            wAuth.center.SaveChanges();
+                            MessageBox.Show("Успешно удалено", "Внимание",
+                                MessageBoxButton.OK, MessageBoxImage.Information);
+                            Close();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Невозможно удаление информации о менеджере организации, " +
+                                "посколку есть связанная с ним организация", "Внимание",
+                                MessageBoxButton.OK, MessageBoxImage.Error);
+                            return;
+                        }
                     }
                 }
                 catch(Exception ex)
