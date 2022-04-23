@@ -73,9 +73,6 @@ namespace Центр_занятости.windows
                         wAuth.center.ReferralToWork.Add(referral);
                     }
                     wAuth.center.SaveChanges();
-                    var item = cmbVac.SelectedItem as Vacancy;
-                    item.Valid = false;
-                    wAuth.center.SaveChanges();
                     string s = Environment.CurrentDirectory;
                     if (s.Contains("Debug"))
                     {

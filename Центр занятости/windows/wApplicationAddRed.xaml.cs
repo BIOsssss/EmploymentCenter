@@ -119,6 +119,18 @@ namespace Центр_занятости.windows
                         application.TimeComment = DateTime.Now;
                     }
                     wAuth.center.SaveChanges();
+                    if(application.StatusUnemployed.Name == "Трудоустроен")
+                    {
+                        var refs = wAuth.center.ReferralToWork.Where(p => p.ID_Applicant == app.ID).ToList();
+                        var res = refs.OrderBy(p => p.DateStart).ToList();
+                        ReferralToWork referral = res[res.Count - 1];
+                        var vac = wAuth.center.Vacancy.Where(p => p.ID == referral.ID_Vacancy).ToList();
+                        foreach(var v in vac)
+                        {
+                            v.Valid = false;
+                        }
+                    }
+                    wAuth.center.SaveChanges();
                     string s = Environment.CurrentDirectory;
                     if (s.Contains("Debug"))
                     {
