@@ -160,10 +160,13 @@ namespace Центр_занятости.windows
                     {
                         var work = wAuth.center.ReferralToWork.Where(p => p.ID_Org == org.ID).ToList();
                         var vac = wAuth.center.Vacancy.Where(p => p.ID_Org == org.ID).ToList();
-                        string error = "Невозможно удаление информации об организации, поскольку есть связанная с ней информация:\n";
+
+                        string er = "Невозможно удалить информацию о соискателе, поскольку есть связанная с ним информация:\n";
+                        string error = "";
                         if(work.Count > 0)
                         {
-                            error += "Направление на работу\n";
+                            error += 
+                                "Направление на работу\n";
                         }
                         if(vac.Count > 0)
                         {
@@ -171,7 +174,7 @@ namespace Центр_занятости.windows
                         }
                         if(error != "")
                         {
-                            MessageBox.Show(error, "Внимание",
+                            MessageBox.Show(er+error, "Внимание",
                                 MessageBoxButton.OK, MessageBoxImage.Error);
                         }
                         else

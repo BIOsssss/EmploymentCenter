@@ -163,7 +163,7 @@ namespace Центр_занятости.windows
                     if (MessageBox.Show("Вы точно хотите удалить данные?", "Внимание",
     MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
                     {
-                        if(manager.Organization == null)
+                        if(manager.Organization == null || manager.Organization.Count == 0)
                         {
                             wAuth.center.ManagerOrg.Remove(manager);
                             wAuth.center.SaveChanges();

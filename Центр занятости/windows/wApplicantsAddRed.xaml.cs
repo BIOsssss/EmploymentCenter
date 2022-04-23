@@ -232,7 +232,8 @@ namespace Центр_занятости.windows
                         var work = wAuth.center.ReferralToWork.Where(p => p.ID_Applicant == applicant.ID).ToList();
                         var stip = wAuth.center.Stipend.Where(p => p.ID_Applicants == applicant.ID).ToList();
 
-                        string error = "Невозможно удалить информацию о соискателе, поскольку есть связанная с ним информация:\n";
+                        string er = "Невозможно удалить информацию о соискателе, поскольку есть связанная с ним информация:\n";
+                        string error = "";
                         if(adrress.Count > 0)
                         {
                             error += "Адрес проживания\n";
@@ -263,7 +264,7 @@ namespace Центр_занятости.windows
                         }
                         if(error != "")
                         {
-                            MessageBox.Show(error, "Внимание",
+                            MessageBox.Show(er+error, "Внимание",
                                 MessageBoxButton.OK, MessageBoxImage.Error);
                             return;
                         }
