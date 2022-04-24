@@ -9,11 +9,13 @@
       Title="pVacancies"
       Style="{StaticResource page}">
     <Grid>
+        <!--Разметка-->
         <Grid.RowDefinitions>
             <RowDefinition Height="60"/>
             <RowDefinition/>
             <RowDefinition Height="89"/>
         </Grid.RowDefinitions>
+        <!--Верхняя часть страницы-->
         <TextBox Style="{StaticResource txbAddRed}"
                  Name="txtName"
                  Width="800"
@@ -56,6 +58,7 @@
                 HorizontalAlignment="Right"
                 Margin="0 0 10 0"
                 Click="btnArchiv_Click"/>
+        <!--Таблица "Вакансии"-->
         <DataGrid Grid.Row="1"
             IsReadOnly="True" AutoGenerateColumns="False"
                   x:Name="grVacancy">
@@ -82,6 +85,7 @@
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
+        <!--Нижняя часть страницы-->
         <Button x:Name="btnClear"
                 Content="Очистить фильтры"
                 Margin="10 0 0 0"
@@ -90,7 +94,7 @@
                 Grid.Row="2"
                 HorizontalAlignment="Left"
                 Click="btnClear_Click"/>
-
+        <!--Пагинация-->
         <StackPanel Grid.Row="2"
                     Style="{StaticResource stNav}"
                     Margin="250 0 0 0">
@@ -118,8 +122,9 @@
                     Content="&gt;&gt;"
                     Click="btnLast_Click"/>
         </StackPanel>
+       
+        <!--CRUD-->
         
-
         <Button x:Name="btnDel"
                 Content="Удалить"
                 Margin="375 0 0 0"

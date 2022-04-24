@@ -71,6 +71,17 @@ namespace Центр_занятости.windows
                     if(referral.ID == 0)
                     {
                         wAuth.center.ReferralToWork.Add(referral);
+                        var app = cmbApp.SelectedItem as Applicants;
+                        var ap = wAuth.center.ApplicationOfUnemployed.Where(p => p.ID_Applicant == app.ID).ToList();
+                        var a = ap.OrderBy(p => p.DateApplicant).ToList();
+                        ApplicationOfUnemployed apl = a[a.Count - 1];
+                        var res = wAuth.center.ApplicationOfUnemployed.Where(p => p.ID == apl.ID).ToList();
+                        var stat = wAuth.center.StatusUnemployed.Where(p => p.Name == "Предложены вакансии").ToList();
+                        StatusUnemployed status = stat[0];
+                        foreach(var item in res)
+                        {
+                            item.Status = status.ID;
+                        }
                     }
                     wAuth.center.SaveChanges();
                     string s = Environment.CurrentDirectory;

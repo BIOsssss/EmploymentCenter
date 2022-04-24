@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Diagnostics;
 
 namespace Центр_занятости.windows
 {
@@ -212,6 +213,23 @@ namespace Центр_занятости.windows
             {
                 cbNoWork.IsChecked = true;
             }
+        }
+
+        private void linkStatus_Click(object sender, RoutedEventArgs e)
+        {
+            Process info = new Process();
+            info.StartInfo.ErrorDialog = true;
+            string s = Environment.CurrentDirectory;
+            if (s.Contains("Debug"))
+            {
+                s = s.Remove(s.Length - 10, 10);
+            }
+            if (s.Contains("EmploymentCenter"))
+            {
+
+            }
+            info.StartInfo.FileName = $"{s}" + @"\" + "status.pdf";
+            info.Start();
         }
     }
 }

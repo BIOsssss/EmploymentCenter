@@ -1,4 +1,25 @@
-﻿using System;
+﻿//**********************************************************************************************************
+//* Название программы: "Центр занятости"                                                           ********
+//*                                                                                                 ********
+//* Назначение прорграмммы: программа предназначена для                                             ********
+//* автоматизации типовых процессов центра занятости                                                ********
+//*                                                                                                 ********
+//* Для начала использования программы нажмите F5                                                   ********
+//*                                                                                                 ********
+//* Правила постановки на учет в центре занятости:                                                  ********
+//* https://riavrn.ru/economy/kak-vstat-na-birzhu-truda-po-bezrabotice/                             ********
+//* Общероссийская база вакансий:                                                                   ********
+//* https://trudvsem.ru/                                                                            ********
+//*                                                                                                 ********
+//* Разработчик: студент группы ПР-365/б Бодин И.О.                                                 ********
+//*                                                                                                 ********
+//* Дата написания: 24.04.2022                                                                      ********
+//*                                                                                                 ********
+//* Версия: 1.0                                                                                     ********
+//**********************************************************************************************************
+
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -27,6 +48,10 @@ namespace Центр_занятости.pages
         public int maxPage;
         public int count = 12;
 
+        /// <summary>
+        /// Основной метод страницы
+        /// </summary>
+        /// <param name="user"></param>
         public pVacancies(Users user)
         {
             InitializeComponent();
@@ -128,6 +153,7 @@ namespace Центр_занятости.pages
                     if (MessageBox.Show("Вы точно хотите удалить данные?", "Внимание",
                         MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
                     {
+                        //проверка существующих записей
                         var res = windows.wAuth.center.ReferralToWork.Where(p => p.ID_Vacancy == item.ID).ToList();
                         if(res.Count > 0)
                         {
@@ -162,11 +188,21 @@ namespace Центр_занятости.pages
             }
         }
 
+        /// <summary>
+        /// Метод: при нажатии на поле поиска, очишает это поле
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void txtName_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             txtName.Text = "";
         }
 
+        /// <summary>
+        /// Метод для текстового поля поиска вакансии по названию
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void txtName_TextChanged(object sender, TextChangedEventArgs e)
         {
             string name = txtName.Text;
@@ -184,7 +220,12 @@ namespace Центр_занятости.pages
                 Refresh();
             }
         }
-
+        
+        /// <summary>
+        /// Метод, предназначенный для фильтрации таблицы
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnFiltr_Click(object sender, RoutedEventArgs e)
         {
             Update();
@@ -263,6 +304,11 @@ namespace Центр_занятости.pages
             }
         }
 
+        /// <summary>
+        /// Метод на кнопку "Очистить фильтры"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnClear_Click(object sender, RoutedEventArgs e)
         {
             Update();
@@ -272,6 +318,9 @@ namespace Центр_занятости.pages
 
         List<Vacancy> list;
 
+        /// <summary>
+        /// Метод для пагинации таблицы
+        /// </summary>
         private void Refresh()
         {
             list = windows.wAuth.center.Vacancy.Where(p => p.Valid == true)
@@ -283,12 +332,22 @@ namespace Центр_занятости.pages
             grVacancy.ItemsSource = listPage;
         }
 
+        /// <summary>
+        /// Метод, возвращающий на 1 страницу таблицы
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnFirst_Click(object sender, RoutedEventArgs e)
         {
             currentPage = 1;
             Refresh();
         }
 
+        /// <summary>
+        /// Метод, возвращающий назад на одну страницу таблицы
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnBack_Click(object sender, RoutedEventArgs e)
         {
             if(currentPage <= 1) currentPage = 1;
@@ -296,6 +355,11 @@ namespace Центр_занятости.pages
             Refresh();
         }
 
+        /// <summary>
+        /// Метод, возвращающий на одну страницу таблицы вперед 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnNext_Click(object sender, RoutedEventArgs e)
         {
             if (currentPage >= maxPage) currentPage = maxPage;
@@ -303,12 +367,22 @@ namespace Центр_занятости.pages
             Refresh();
         }
 
+        /// <summary>
+        /// Метод, возвращающий на последнюю страницу таблицы
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnLast_Click(object sender, RoutedEventArgs e)
         {
             currentPage = maxPage;
             Refresh();
         }
 
+        /// <summary>
+        /// Метод для отображения недействительных вакансий
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnArchiv_Click(object sender, RoutedEventArgs e)
         {
             grVacancy.ItemsSource = windows.wAuth.center.Vacancy
@@ -317,6 +391,11 @@ namespace Центр_занятости.pages
             .ToList();
         }
 
+        /// <summary>
+        /// Метод, возвращающий вакансии для людей с инвалидностью
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnInv_Click(object sender, RoutedEventArgs e)
         {
             grVacancy.ItemsSource = windows.wAuth.center.Vacancy

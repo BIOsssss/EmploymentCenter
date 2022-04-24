@@ -101,7 +101,11 @@
                    Grid.Row="4"
                    HorizontalAlignment="Left"
                    Margin="20 0 0 0">
-            <Run>Статус</Run>
+            <Hyperlink
+                Name="linkStatus"
+                Click="linkStatus_Click">
+                Статус
+            </Hyperlink>
         </TextBlock>
         <ComboBox Style="{StaticResource cmbAddRed}"
                   Name="cmbStatus"
