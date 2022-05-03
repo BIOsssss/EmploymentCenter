@@ -399,7 +399,7 @@ namespace Центр_занятости.pages
         private void btnInv_Click(object sender, RoutedEventArgs e)
         {
             grVacancy.ItemsSource = windows.wAuth.center.Vacancy
-                .Where(p => p.ForDisabled == true)
+                .Where(p => p.ForDisabled == true && p.Valid == true)
                 .OrderByDescending(p => p.Date)
                 .ToList();
         }

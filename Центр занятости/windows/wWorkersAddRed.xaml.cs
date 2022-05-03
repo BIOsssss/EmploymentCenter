@@ -32,6 +32,7 @@ namespace Центр_занятости.windows
             if(user_main.Roles.Name == "Инспектор")
             {
                 btnDel.Visibility = Visibility.Hidden;
+                txtZP.IsEnabled = false;
             }
         }
 

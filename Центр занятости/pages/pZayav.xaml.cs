@@ -111,18 +111,41 @@ namespace Центр_занятости.pages
             try
             {
                 var item = grZayav.SelectedItem as ApplicationOfUnemployed;
+                string error = "Удаление невозможно, поскольку есть связанная запись с ";
                 if (item != null)
                 {
                     if (MessageBox.Show("Вы точно хотите удалить данные?", "Внимание",
                         MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
                     {
-                        windows.wAuth.center.ApplicationOfUnemployed.Remove(item);
-                        windows.wAuth.center.SaveChanges();
-                        Update();
-                        Refresh();
+                        if (item.Applicants.ReferralToWork.Count 
+                            != 0 && item.Applicants.Stipend.Count != 0)
+                        {
+                            MessageBox.Show($"{error} направлениями на работу и назначенными пособиями",
+                                "Внимание", MessageBoxButton.OK, MessageBoxImage.Error);
+                            return;
+                        }
+                        else if (item.Applicants.Stipend.Count != 0)
+                        {
+                            MessageBox.Show($"{error} назначенными пособиями",
+                                "Внимание", MessageBoxButton.OK, MessageBoxImage.Error);
+                            return;
+                        }
+                        else if (item.Applicants.ReferralToWork.Count != 0)
+                        {
+                            MessageBox.Show($"{error} направлениями на работу",
+                                "Внимание", MessageBoxButton.OK, MessageBoxImage.Error);
+                            return;
+                        }
+                        else
+                        {
+                            windows.wAuth.center.ApplicationOfUnemployed.Remove(item);
+                            windows.wAuth.center.SaveChanges();
+                            Update();
+                            Refresh();
 
-                        MessageBox.Show("Успешно удалено", "Внимание",
-                            MessageBoxButton.OK, MessageBoxImage.Information);
+                            MessageBox.Show("Успешно удалено", "Внимание",
+                                MessageBoxButton.OK, MessageBoxImage.Information);
+                        }
                     }
                 }
                 else
@@ -283,6 +306,24 @@ namespace Центр_занятости.pages
                 var res = applications.Where(p => p.StatusUnemployed.Name != "Трудоустроен").ToList();
                 applications = res;
                 grZayav.ItemsSource = applications;
+            }
+        }
+
+        public bool clickInv = false;
+
+        private void btnInv_Click(object sender, RoutedEventArgs e)
+        {
+            if (clickInv)
+            {
+                Update();
+                Refresh();
+                clickInv = false;
+            }
+            else
+            {
+                grZayav.ItemsSource = windows.wAuth.center.ApplicationOfUnemployed
+                    .Where(p => p.Disabled == true).ToList();
+                clickInv = true;
             }
         }
     }

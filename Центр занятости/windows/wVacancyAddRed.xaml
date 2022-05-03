@@ -74,11 +74,12 @@
             </ComboBox.ToolTip>
         </ComboBox>
         <TextBlock Grid.Row="2"
+                   Name="tZP"
                    Grid.Column="0"
                    Style="{StaticResource txtAddRed}"
                    TextWrapping="Wrap">
                 <Run Foreground="Red">*</Run>
-                <Run>Заработная плата, руб.</Run>
+                <Run>Зарплата, руб. (от)</Run>
         </TextBlock>
         <TextBox Width="250"
                  Grid.Row="2"

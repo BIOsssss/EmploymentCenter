@@ -98,7 +98,8 @@
                  Grid.Row="6"
                  Grid.Column="1"
                  Text="{Binding Wages,
-            StringFormat={}{0:0}}"/>
+            StringFormat={}{0:0}}"
+                 Name="txtZP"/>
         <Button x:Name="bntOK"
                 Style="{StaticResource btnNorm}"
                 Content="Сохранить"

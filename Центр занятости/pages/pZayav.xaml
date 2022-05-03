@@ -54,11 +54,13 @@
             <Button x:Name="btnFirst"
                     Style="{StaticResource btnNav}"
                     Content="&lt;&lt;"
-                    Click="btnFirst_Click"/>
+                    Click="btnFirst_Click"
+                    Margin="5"/>
             <Button x:Name="btnBack"
                     Style="{StaticResource btnNav}"
                     Content="&lt;"
-                    Click="btnBack_Click"/>
+                    Click="btnBack_Click"
+                    Margin="5"/>
             <TextBox Style="{StaticResource txbNav}"
                      x:Name="txtCount"/>
             <TextBlock Text="из"
@@ -69,11 +71,13 @@
             <Button x:Name="btnNext"
                     Style="{StaticResource btnNav}"
                     Content="&gt;"
-                    Click="btnNext_Click"/>
+                    Click="btnNext_Click"
+                    Margin="5"/>
             <Button x:Name="btnLast"
                     Style="{StaticResource btnNav}"
                     Content="&gt;&gt;"
-                    Click="btnLast_Click"/>
+                    Click="btnLast_Click"
+                    Margin="5"/>
         </StackPanel>
 
         <Button x:Name="btnNotTrud"
@@ -81,12 +85,27 @@
                 Style="{StaticResource btnNorm}"
                 Grid.Row="2"
                 Width="210"
-                Margin="0 0 50 0"
+                Margin="0 0 160 0"
                 Click="btnNotTrud_Click"/>
-
+        <Button x:Name="btnInv"
+                Style="{StaticResource btnAdd}"
+                Grid.Row="1"
+                Margin="0 0 -135 0"
+                Height="50"
+                Width="50"
+                BorderBrush="Transparent"
+                Background="Transparent"
+                Click="btnInv_Click">
+            <Image Source="/image/invalid.jpg"
+                   Width="50"
+                   Height="50"/>
+            <Button.ToolTip>
+                <ToolTip Content="Показать соискателей с инвалидностью"/>
+            </Button.ToolTip>
+        </Button>
         <Button x:Name="btnDel"
                 Content="Удалить"
-                Margin="375 0 0 0"
+                Margin="380 0 0 0"
                 Style="{StaticResource btnNorm}"
                 Grid.Row="2"
                 Click="btnDel_Click"/>
@@ -96,7 +115,7 @@
                 Style="{StaticResource btnNorm}"
                 Grid.Row="2"
                 HorizontalAlignment="Right"
-                Margin="0 0 170 0"
+                Margin="0 0 168 0"
                 Click="btnRed_Click"/>
 
         <Button x:Name="btnAdd"

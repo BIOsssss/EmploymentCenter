@@ -74,17 +74,66 @@ namespace Центр_занятости.pages
             try
             {
                 var item = grUsers.SelectedItem as Users;
+                string error = "Невозможно удалить запись, поскольку есть информация о";
                 if (item != null)
                 {
                     if (MessageBox.Show("Вы точно хотите удалить данные?", "Внимание", 
                         MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
                     {
-                        windows.wAuth.center.Users.Remove(item);
-                        windows.wAuth.center.SaveChanges();
-                        Update();
-                        Refresh();
-                        MessageBox.Show("Успешно удалено", "Внимание",
-                            MessageBoxButton.OK, MessageBoxImage.Information);
+                        if(item.Roles.Name == "Менеджер организации")
+                        {
+                            if(item.ManagerOrg.Count != 0)
+                            {
+                                MessageBox.Show($"{error} менеджере организации", "Внимание",
+                                    MessageBoxButton.OK, MessageBoxImage.Error);
+                                return;
+                            }
+                            else
+                            {
+                                windows.wAuth.center.Users.Remove(item);
+                                windows.wAuth.center.SaveChanges();
+                                Update();
+                                Refresh();
+                                MessageBox.Show("Успешно удалено", "Внимание",
+                                    MessageBoxButton.OK, MessageBoxImage.Information);
+                            }
+                        }
+                        else if (item.Roles.Name == "Соискатель")
+                        {
+                            if(item.Applicants.Count != 0)
+                            {
+                                MessageBox.Show($"{error} соискателе", "Внимание",
+                              MessageBoxButton.OK, MessageBoxImage.Error);
+                                return;
+                            }
+                            else
+                            {
+                                windows.wAuth.center.Users.Remove(item);
+                                windows.wAuth.center.SaveChanges();
+                                Update();
+                                Refresh();
+                                MessageBox.Show("Успешно удалено", "Внимание",
+                                    MessageBoxButton.OK, MessageBoxImage.Information);
+                            }
+                        }
+                        else if (item.Roles.Name == "Инспектор")
+                        {
+                            if(item.Workers.Count != 0)
+                            {
+                                MessageBox.Show($"{error}б инспекторе", "Внимание",
+                              MessageBoxButton.OK, MessageBoxImage.Error);
+                                return;
+                            }
+                            else
+                            {
+                                windows.wAuth.center.Users.Remove(item);
+                                windows.wAuth.center.SaveChanges();
+                                Update();
+                                Refresh();
+                                MessageBox.Show("Успешно удалено", "Внимание",
+                                    MessageBoxButton.OK, MessageBoxImage.Information);
+                            }
+                        }
                     }
                 }
                 else
