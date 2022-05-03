@@ -69,7 +69,19 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_6E5E4DDBDB3843B386B201111144841B"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_70FB0791BF3A407882A9DF13DA00FC56"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_712CF3D1BC034572B2F61331009D61AD"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -166,6 +178,12 @@
         "Entry"
         {
         "MsmKey" = "8:_B5949C07D59241C3AF1260C2C552A65F"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_B71519EF03A34EAD86B883A31558DD7C"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -580,10 +598,50 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_6E5E4DDBDB3843B386B201111144841B"
+            {
+            "SourcePath" = "8:..\\Центр занятости\\center_manager.chm"
+            "TargetName" = "8:center_manager.chm"
+            "Tag" = "8:"
+            "Folder" = "8:_C471B467DE6B4C06A3942320624C116A"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_70FB0791BF3A407882A9DF13DA00FC56"
             {
             "SourcePath" = "8:..\\Центр занятости\\status.pdf"
             "TargetName" = "8:status.pdf"
+            "Tag" = "8:"
+            "Folder" = "8:_C471B467DE6B4C06A3942320624C116A"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_712CF3D1BC034572B2F61331009D61AD"
+            {
+            "SourcePath" = "8:..\\Центр занятости\\center_worker.chm"
+            "TargetName" = "8:center_worker.chm"
             "Tag" = "8:"
             "Folder" = "8:_C471B467DE6B4C06A3942320624C116A"
             "Condition" = "8:"
@@ -919,6 +977,26 @@
             "TargetName" = "8:uUZ5RvY0g3LZq2LMuiaA_card.jpg"
             "Tag" = "8:"
             "Folder" = "8:_3363CBA517C44CD589E5C625C7BE3154"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_B71519EF03A34EAD86B883A31558DD7C"
+            {
+            "SourcePath" = "8:..\\Центр занятости\\center_employment.chm"
+            "TargetName" = "8:center_employment.chm"
+            "Tag" = "8:"
+            "Folder" = "8:_C471B467DE6B4C06A3942320624C116A"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"

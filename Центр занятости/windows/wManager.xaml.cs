@@ -116,7 +116,7 @@ namespace Центр_занятости.windows
             {
 
             }
-            info.StartInfo.FileName = $"{s}" + @"\" + "center.chm";
+            info.StartInfo.FileName = $"{s}" + @"\" + "center_manager.chm";
             info.Start();
         }
 
